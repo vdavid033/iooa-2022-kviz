@@ -45,7 +45,7 @@ Koraci:
     
     I potvrdite izmjene:    
     
-    **_git commit -m "Opis novih izmjena"**  
+    **_git commit -m "Opis novih izmjena"_**  
 
     Ukoliko se pojave konflikti:  
     
@@ -61,7 +61,7 @@ Koraci:
     
     I potvrdite izmjene:    
 
-    **_git commit -m "Opis novih izmjena"**  
+    **_git commit -m "Opis novih izmjena"_**  
 
 * Obzirom da postoji development grana na lokalnom repozitoriju, koja sadrži zadnje izmjene, te izmjene se mogu ubaciti u feature granu. Treba se pozicionirati na feature granu i spojiti na nju izmjene u developmentu 
     **_git merge development_**  

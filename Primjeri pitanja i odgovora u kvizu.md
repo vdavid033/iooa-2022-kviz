@@ -1,6 +1,8 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
 
+Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
+
 Pitanje - Kojeg roda je biljka?
 Odgovor - Nalazi se u tablici genus
 
@@ -33,11 +35,16 @@ Poveži pojmove:
     - Latinski naziv biljne vrste s nazivom roda
     - Naziv podvrste s nazivom biljne vrste
 
-
 Pitanje: Koje je boje naranca?
 Odgovor: Narancaste
 Pitanje: Koje je boje jagoda?
 Odgovor: crvene
+
+-spajanje slike i naziva biljke
+-odabir biljnih dijelova koji pripadaju biljci
+-odabir točnog latinskog naziva za nazive, djelove, biljne vrste... (i obratno, sa latinskog na hrvatski)
+-odabir podvrsta koje pripadaju vrsti
+-odabir točnog odgovora (biljke) po njenom opisu
 
 
 Pitanje: Unesi Latinski naziv Ruže

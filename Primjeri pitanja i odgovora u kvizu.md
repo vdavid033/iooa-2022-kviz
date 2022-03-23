@@ -1,5 +1,7 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
 Pitanje - Kojeg roda je biljka?
@@ -26,10 +28,7 @@ Klobuk
 Kako se zove dio gljive koji je zaboden u zemlju?
 <<<<<<< HEAD
 Miceljij
-=======
-<<<<<<< HEAD
->>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2
-<<<<<<< HEAD
+
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
 
@@ -58,13 +57,29 @@ Poveži pojmove:
 =======
 
 <<<<<<< HEAD
+>>>>>>> 04d299b7ee0e5a2c8c881adb51601d1d139e1072
 Pitanje: Koje je boje naranca?
 Odgovor: Narancaste
-=======
 Pitanje: Koje je boje jagoda?
 Odgovor: crvene
->>>>>>> ab978acc5ba6c076c226dac29b45dc806daed974
 <<<<<<< HEAD
+
+Pitanje: Unesi Latinski naziv Ruže
+Odgovor: Rosa
+Tablica: Biljna Vrsta
+
+Pitanje: Rosaceae pripada kojoj porodici
+Odgovor: ruža
+Tablica: Botanicka porodica
+
+Pitanje: Nabroji 3 biljne vrste
+Odgovor: 
+Tablica: Biljna Vrsta
+
+Pitanje: Unesi naziv biljke prikazan na slici
+Odgovor: ruža
+Tablica: Slika, Biljna Vrsta
+
 
 <p>
 -spajanje slike i naziva biljke </br>
@@ -73,11 +88,7 @@ Odgovor: crvene
 -odabir podvrsta koje pripadaju vrsti</br>
 -odabir točnog odgovora (biljke) po njenom opisu</br>
 </p>
-=======
->>>>>>> 907591e034e4c2f322f24bd95b3db308ab42de4b
->>>>>>> 1968154d1155f6ba139410705513b00b5c99cec6
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 1.Pretpostavlja se da riječ lavanda dolazi od rimske riječi 'lavare', što znači (Uporabni dio)
 -govoriti
@@ -100,15 +111,3 @@ Odgovor: crvene
 -Gorski javor
 =======
 Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta
->>>>>>> 6b2dada6524bc4564749fc8d84bbec4f872f437b
-=======
->>>>>>> 846437c1c686e1dc650f252ba1c48b969857b437
-<<<<<<< HEAD
->>>>>>> 3813fed0027c24f489880bcbf2960c539107d325
-=======
->>>>>>> 8d80b3ff229740bfdca44afe2b60f9bfe46cfab8
-<<<<<<< HEAD
->>>>>>> acf071a56aa0b3d1610aaf8b20251effad0991bb
-=======
->>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2
->>>>>>> 6b2dada6524bc4564749fc8d84bbec4f872f437b

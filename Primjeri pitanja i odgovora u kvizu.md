@@ -1,6 +1,5 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
-<<<<<<< HEAD
 
 <<<<<<< HEAD
 Pitanje - Kojeg roda je biljka?
@@ -25,19 +24,26 @@ Klobuk
 
 
 Kako se zove dio gljive koji je zaboden u zemlju?
+<<<<<<< HEAD
 Miceljij
 =======
+<<<<<<< HEAD
 >>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2
 <<<<<<< HEAD
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
 
 <<<<<<< HEAD
+=======
+Miceljij
+=======
+
+Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
+=======
+>>>>>>> a4ae4879739ad0c11a42935253416b4c180602f7
 
 =======
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 
 1.Kojoj biljnoj vrsti pripada biljka sa slike?
 2.Kojoj biljnoj vrsti pripada xy biljna podvrsta?

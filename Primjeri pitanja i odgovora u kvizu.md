@@ -1,6 +1,16 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
 <<<<<<< HEAD
+
+Primjeri pitanja za biljke i ostale biljne vrste
+
+Kako se zove gornji dio gljive odnosno ono što jedemo?
+Klobuk
+
+Kako se zove dio gljive koji je zaboden u zemlju?
+Miceljij
+=======
+<<<<<<< HEAD
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
 <<<<<<< HEAD
@@ -29,11 +39,13 @@ Odgovor: crvene
 >>>>>>> ab978acc5ba6c076c226dac29b45dc806daed974
 <<<<<<< HEAD
 
--spajanje slike i naziva biljke
--odabir biljnih dijelova koji pripadaju biljci
+<p>
+-spajanje slike i naziva biljke </br>
+-odabir biljnih dijelova koji pripadaju biljci</br>
 -odabir točnog latinskog naziva za nazive, djelove, biljne vrste... (i obratno, sa latinskog na hrvatski)
--odabir podvrsta koje pripadaju vrsti
--odabir točnog odgovora (biljke) po njenom opisu
+-odabir podvrsta koje pripadaju vrsti</br>
+-odabir točnog odgovora (biljke) po njenom opisu</br>
+</p>
 =======
 >>>>>>> 907591e034e4c2f322f24bd95b3db308ab42de4b
 >>>>>>> 1968154d1155f6ba139410705513b00b5c99cec6

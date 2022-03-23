@@ -2,6 +2,7 @@
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 Pitanje - Kojeg roda je biljka?
 Odgovor - Nalazi se u tablici genus
 
@@ -15,10 +16,25 @@ Pitanje - Odabrati sliku određene biljke
 Odgovor - Nalazi se u tablici image
 =======
 
+
+=======
+Primjeri pitanja za biljke i ostale biljne vrste
+
+Kako se zove gornji dio gljive odnosno ono što jedemo?
+Klobuk
+
+
+Kako se zove dio gljive koji je zaboden u zemlju?
+Miceljij
+=======
+>>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2
 <<<<<<< HEAD
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
 
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -54,5 +70,12 @@ Odgovor: crvene
 =======
 >>>>>>> 907591e034e4c2f322f24bd95b3db308ab42de4b
 >>>>>>> 1968154d1155f6ba139410705513b00b5c99cec6
+<<<<<<< HEAD
+Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta
+=======
 >>>>>>> 846437c1c686e1dc650f252ba1c48b969857b437
+<<<<<<< HEAD
 >>>>>>> 3813fed0027c24f489880bcbf2960c539107d325
+=======
+>>>>>>> 8d80b3ff229740bfdca44afe2b60f9bfe46cfab8
+>>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2

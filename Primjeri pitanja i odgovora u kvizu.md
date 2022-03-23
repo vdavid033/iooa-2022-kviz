@@ -94,3 +94,16 @@ Tablica: Slika, Biljna Vrsta
 -Gorski javor
 
 Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 846437c1c686e1dc650f252ba1c48b969857b437
+<<<<<<< HEAD
+>>>>>>> 3813fed0027c24f489880bcbf2960c539107d325
+=======
+>>>>>>> 8d80b3ff229740bfdca44afe2b60f9bfe46cfab8
+>>>>>>> 8d18029e7ddf214c6b05f169fe82d1766b6482e2
+>>>>>>> 04d299b7ee0e5a2c8c881adb51601d1d139e1072
+testni push
+>>>>>>> 05389a02bfa3cc82df309329663d8f4bfb7539d5

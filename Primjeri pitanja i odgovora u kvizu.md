@@ -2,7 +2,6 @@
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
-<
 1.Kojoj biljnoj vrsti pripada biljka sa slike?
 2.Kojoj biljnoj vrsti pripada xy biljna podvrsta?
 3.Koji naziv biljke pripada opisanom biljnom dijelu?
@@ -16,4 +15,10 @@ Pitanje: Koje je boje naranca?
 Odgovor: Narancaste
 =======
 Pitanje: Koje je boje jagoda?
+<<<<<<< HEAD
 Odgovor: crvene
+-spajanje slike i naziva biljke
+-odabir biljnih dijelova koji pripadaju biljci
+-odabir točnog latinskog naziva za nazive, djelove, biljne vrste... (i obratno, sa latinskog na hrvatski)
+-odabir podvrsta koje pripadaju vrsti
+-odabir točnog odgovora (biljke) po njenom opisu

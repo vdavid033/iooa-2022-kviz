@@ -1,6 +1,9 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
 <<<<<<< HEAD
+Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
+=======
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -24,6 +27,18 @@ Odgovor: Narancaste
 Pitanje: Koje je boje jagoda?
 Odgovor: crvene
 >>>>>>> ab978acc5ba6c076c226dac29b45dc806daed974
+<<<<<<< HEAD
+
+-spajanje slike i naziva biljke
+-odabir biljnih dijelova koji pripadaju biljci
+-odabir točnog latinskog naziva za nazive, djelove, biljne vrste... (i obratno, sa latinskog na hrvatski)
+-odabir podvrsta koje pripadaju vrsti
+-odabir točnog odgovora (biljke) po njenom opisu
+=======
 >>>>>>> 907591e034e4c2f322f24bd95b3db308ab42de4b
 >>>>>>> 1968154d1155f6ba139410705513b00b5c99cec6
+<<<<<<< HEAD
 Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta
+=======
+>>>>>>> 846437c1c686e1dc650f252ba1c48b969857b437
+>>>>>>> 8d80b3ff229740bfdca44afe2b60f9bfe46cfab8

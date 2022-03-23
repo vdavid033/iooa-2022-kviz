@@ -128,5 +128,3 @@ Tablica: Slika, Biljna Vrsta
 =======
 Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta
 >>>>>>> 8aa0e8d29c872fe331b5a00a3a91dde6d8f74f1c
-
-Ja sam Ivana Babic i nisam skuzila nista danas :D

@@ -12,15 +12,12 @@ Miceljij
 =======
 Miceljij
 =======
-<<<<<<< HEAD
+
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
-<<<<<<< HEAD
 
 =======
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 
 1.Kojoj biljnoj vrsti pripada biljka sa slike?
 2.Kojoj biljnoj vrsti pripada xy biljna podvrsta?

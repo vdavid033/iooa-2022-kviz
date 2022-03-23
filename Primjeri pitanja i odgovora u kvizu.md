@@ -14,9 +14,11 @@ Odgovor - Nalazi se u tablici useful_part
 Pitanje - Odabrati sliku određene biljke
 Odgovor - Nalazi se u tablici image
 =======
+
 <<<<<<< HEAD
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 =======
+
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -25,12 +27,14 @@ Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
 2.Kojoj biljnoj vrsti pripada xy biljna podvrsta?
 3.Koji naziv biljke pripada opisanom biljnom dijelu?
 =======
+
 Poveži pojmove:
     - Biljna vrsta hrvatski naziv s latinskim nazivom botaničke porodice
     - Latinski naziv biljne vrste s nazivom roda
     - Naziv podvrste s nazivom biljne vrste
 >>>>>>> bceb4b8d7ed82f0199b0f8eb8cf61504fcf4fdf8
 =======
+
 <<<<<<< HEAD
 Pitanje: Koje je boje naranca?
 Odgovor: Narancaste

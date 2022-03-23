@@ -1,9 +1,6 @@
 ## Primjeri pitanja i odgovora u kvizu
 _Ovdje navedite moguće primjere pitanja i odgovora u kvizu._  
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
 Pitanje - Kojeg roda je biljka?
 Odgovor - Nalazi se u tablici genus
 
@@ -15,54 +12,33 @@ Odgovor - Nalazi se u tablici useful_part
 
 Pitanje - Odabrati sliku određene biljke
 Odgovor - Nalazi se u tablici image
-=======
 
-
-=======
 Primjeri pitanja za biljke i ostale biljne vrste
 
 Kako se zove gornji dio gljive odnosno ono što jedemo?
 Klobuk
 
-
 Kako se zove dio gljive koji je zaboden u zemlju?
-<<<<<<< HEAD
 Miceljij
 
 Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
-=======
-
-<<<<<<< HEAD
-=======
-Miceljij
-=======
-
-Visibaba je rod biljaka iz porodice? Odgovor: Amaryllidaceae
-=======
->>>>>>> a4ae4879739ad0c11a42935253416b4c180602f7
-
-=======
-
 
 1.Kojoj biljnoj vrsti pripada biljka sa slike?
 2.Kojoj biljnoj vrsti pripada xy biljna podvrsta?
 3.Koji naziv biljke pripada opisanom biljnom dijelu?
-=======
+
 
 Poveži pojmove:
     - Biljna vrsta hrvatski naziv s latinskim nazivom botaničke porodice
     - Latinski naziv biljne vrste s nazivom roda
     - Naziv podvrste s nazivom biljne vrste
->>>>>>> bceb4b8d7ed82f0199b0f8eb8cf61504fcf4fdf8
-=======
 
-<<<<<<< HEAD
->>>>>>> 04d299b7ee0e5a2c8c881adb51601d1d139e1072
+
 Pitanje: Koje je boje naranca?
 Odgovor: Narancaste
 Pitanje: Koje je boje jagoda?
 Odgovor: crvene
-<<<<<<< HEAD
+
 
 Pitanje: Unesi Latinski naziv Ruže
 Odgovor: Rosa
@@ -109,5 +85,5 @@ Tablica: Slika, Biljna Vrsta
 -Jablan
 -Tisa (točno)
 -Gorski javor
-=======
+
 Koje podvrste?(više njih) pripadaju biljnoj vrsti_? Tablice Biljna vrsta, podvrsta

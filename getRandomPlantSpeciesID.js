@@ -1,5 +1,8 @@
 
-/*getRandomPlantSpeciesID() 
+/* Naziv funkcije: getRandomPlantSpeciesID()
+   Kreator: Filip Stropin
+   Datum: 01.04.2022.
+   __________________________________________________________________________________
  *funkcija uzima prethodno kreiran json dokument koji sadrzi sve biljne vrste.
  *koristeci metodu marth.random, uzima se nasumicna "id" vrijednost iz "data" kljuca
  *kao rezultat funkcije vraca se id vrijednost*/

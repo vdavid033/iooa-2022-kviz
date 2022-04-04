@@ -36,6 +36,29 @@ return response.send({ error: false, data: results[0], message:
 'useful_part list.' });
 });
 });
+
+// Dohvat plant_species(biljna vrsta) preko id
+app.get("/plant_species/:id", function (request, response) {
+    let plant_species_id = request.params.id;
+    if (!plant_species_id) {
+      return response
+        .status(400)
+        .send({ error: true, message: "Please provide plant_species_id" });
+    }
+    dbConn.query(
+      "SELECT * FROM plant_species where id=?",
+      plant_species_id,
+      function (error, results, fields) {
+        if (error) throw error;
+        return response.send({
+          error: false,
+          data: results[0],
+          message: "plant_species list.",
+        });
+      }
+    );
+  });
+
 // set port
 app.listen(3000, function () {
 console.log('Node app is running on port 3000');

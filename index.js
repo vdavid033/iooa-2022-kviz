@@ -99,6 +99,17 @@ app.get("/plant_species/:id", function (request, response) {
   );
 });
 
+app.get("/botanical_family", function (request, response) {
+  dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
+    if (error) throw error;
+    return response.send({
+      error: false,
+      data: results,
+      message: "botanical_family list.",
+    });
+  });
+});
+
 // set port
 app.listen(3000, function () {
   console.log("Node app is running on port 3000");

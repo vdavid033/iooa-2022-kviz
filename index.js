@@ -99,6 +99,7 @@ app.get("/plant_species/:id", function (request, response) {
   );
 });
 
+// Dohvat svih biljnih porodica
 app.get("/botanical_family", function (request, response) {
   dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
     if (error) throw error;

@@ -110,6 +110,28 @@ app.get("/botanical_family", function (request, response) {
   });
 });
 
+// Dohvat biljne porodice za jednu biljnu vrstu #21
+app.get("/botanical_family_plant_species/:id", function (request, response) {
+  let plant_species_id = request.params.id;
+  if (!plant_species_id) {
+    return response
+      .status(400)
+      .send({ error: true, message: "Please provide plant_species_id" });
+  }
+  dbConn.query(
+    "SELECT botanical_family.id, botanical_family.croatian_name, botanical_family.latin_name FROM botanical_family LEFT JOIN genus ON botanical_family.id=genus.botanical_family_id LEFT JOIN plant_species ON genus.id=plant_species.genus_id WHERE plant_species.id=?",
+    plant_species_id,
+    function (error, results, fields) {
+      if (error) throw error;
+      return response.send({
+        error: false,
+        data: results[0],
+        message: "botanical_family_plant_species",
+      });
+    }
+  );
+});
+
 // set port
 app.listen(3000, function () {
   console.log("Node app is running on port 3000");

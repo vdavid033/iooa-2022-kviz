@@ -14,3 +14,6 @@ Primjer: http://localhost/botanical_family/22
 
 Dohvaća biljne vrste za botaničku porodicu s id-jem  
 Primjer: http://localhost/plant_species_by_bf/22
+
+// Dohvat svih biljnih porodica https://localhost:3000/botanical_family
+

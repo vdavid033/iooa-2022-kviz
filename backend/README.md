@@ -7,7 +7,7 @@ Primjer: http://localhost/plant_species/1
 
 
 ### http://localhost/botanical_family/:id
-Dohvaća jednu botaničku porodicu prema id.
+Dohvaća jednu botaničku porodicu prema id.<br/>
 Primjer: http://localhost/botanical_family/22
 
 ### http://localhost/plant_species_by_bf/:id

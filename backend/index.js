@@ -24,7 +24,7 @@ app.get('/plant_species', function (request, response) {
             error: false, data: results, message: 'plant_species_list.'
         });
     });
-<<<<<<< HEAD
+
     module.exports = app;
     
 
@@ -39,7 +39,7 @@ app.get("/botanical_family", function (request, response) {
       });
     });
   });
-=======
+
 });
 // Retrieve plant_species with id 
 app.get('/plant_species/:id', function (request, response) {

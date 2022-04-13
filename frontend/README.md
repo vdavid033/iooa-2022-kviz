@@ -23,7 +23,8 @@ Prijedlog: nakon odabira "Prihvati odgovor" se slova netočnih odgovora promjene
 
 Prijedlog: kada se odgovori na sva pitanja i odabere "Završi i predaj", ispisuju se sva pitanja sa odgovorima i kraj pitanja na koje je odgovoreno točno bude kvačica, a ako je odgovoreno krivo bude X i ispiše se točan odgovor
 
-Prijedlog za ispis točnih/netočnih odgovora, ukoliko korisnik odgovori točno pojavi se :) zelene boje pored odabranog odgovora, ukoliko je netočno :( crvene boje pored odabranog odgovora.
+Prijedlog za ispis točnih/netočnih odgovora, ukoliko korisnik odgovori točno pojavi se :) zelene boje pored odabranog odgovora, ukoliko je netočno :( crvene boje pored odabranog odgovora.  
+
 Prijedlog: ako je odgovor točan radio se označi zelenom bojom a ako je kriv označi se crvenom bojom (prikazano na slici)
 
 ![Snimka zaslona 2022-04-13 180930](https://user-images.githubusercontent.com/101420754/163224103-0e5d5193-ca01-48b1-95d6-5a0da0eb8be5.png)

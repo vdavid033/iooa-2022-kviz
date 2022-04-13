@@ -21,29 +21,10 @@ app.get('/plant_species', function (request, response) {
     dbConn.query('SELECT * FROM plant_species', function (error, results, fields) {
         if (error) throw error;
         return response.send({
-            error: false, data: results, message: 'plant_species_list.' });
-});
-    });
-    // Retrieve plant_species with id 
-    app.get('/plant_species/:id', function (request, response) {
-        let plant_species_id = request.params.id;
-        if (!plant_species_id) {
-            return response.status(400).send({
-                error: true, message: 'Please provide plant_species_id' });
-}
-dbConn.query('SELECT * FROM plant_species where id=?', plant_species_id, function
-                    (error, results, fields) {
-                    if (error) throw error;
-                    return response.send({
-                        error: false, data: results[0], message:
-                            'plant_species list.'
-                    });
-                });
+            error: false, data: results, message: 'plant_species_list.'
         });
-    // set port
-    app.listen(3000, function () {
-        console.log('Node app is running on port 3000');
     });
+<<<<<<< HEAD
     module.exports = app;
     
 
@@ -58,3 +39,68 @@ app.get("/botanical_family", function (request, response) {
       });
     });
   });
+=======
+});
+// Retrieve plant_species with id 
+app.get('/plant_species/:id', function (request, response) {
+    let plant_species_id = request.params.id;
+    if (!plant_species_id) {
+        return response.status(400).send({
+            error: true, message: 'Please provide plant_species_id'
+        });
+    }
+    dbConn.query('SELECT * FROM plant_species where id=?', plant_species_id, function
+        (error, results, fields) {
+        if (error) throw error;
+        return response.send({
+            error: false, data: results[0], message:
+                'plant_species list.'
+        });
+    });
+});
+
+//dohvat svih biljnih vrsta za jednu botanicku porodicu #23
+app.get('/plant_species_by_bf/:id', function (request, response) {
+    let botanical_family_id = request.params.id;
+    if (!botanical_family_id) {
+        return response.status(400).send({ error: true, message: 'Please provide botanical_family_id' });
+    }
+    dbConn.query('SELECT ps.id, ps.croatian_name, ps.latin_name FROM plant_species ps left OUTER join genus g ON ps.genus_id=g.id left OUTER join botanical_family bf on g.botanical_family_id=bf.id where bf.id=?', botanical_family_id, function
+        (error, results, fields) {
+        if (error) throw error;
+        return response.send({
+            error: false, data: results, message:
+                'plant_species list.'
+        });
+    });
+});
+
+// set port
+app.listen(3000, function () {
+    console.log('Node app is running on port 3000');
+});
+module.exports = app;
+
+
+// Retrieve botanical_family with id
+app.get("/botanical_family/:id", function (request, response) {
+    let botanical_family_id = request.params.id;
+    if (!botanical_family_id) {
+        return response
+            .status(400)
+            .send({ error: true, message: "Please provide botanical_family_id" });
+    }
+    dbConn.query(
+        "SELECT * FROM botanical_family where id=?",
+        botanical_family_id,
+        function (error, results, fields) {
+            if (error) throw error;
+            return response.send({
+                error: false,
+                data: results[0],
+                message: "botanical_family list.",
+            });
+        }
+    );
+});
+>>>>>>> 5ab0bc417e01947b370f3af8a2756eeae4aaa34b

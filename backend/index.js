@@ -26,19 +26,19 @@ app.get('/plant_species', function (request, response) {
     });
 
     module.exports = app;
-    
+
 
     // Dohvat svih biljnih porodica #19
-app.get("/botanical_family", function (request, response) {
-    dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
-      if (error) throw error;
-      return response.send({
-        error: false,
-        data: results,
-        message: "botanical_family list.",
-      });
+    app.get("/botanical_family", function (request, response) {
+        dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
+            if (error) throw error;
+            return response.send({
+                error: false,
+                data: results,
+                message: "botanical_family list.",
+            });
+        });
     });
-  });
 
 });
 // Retrieve plant_species with id 
@@ -107,33 +107,33 @@ app.get("/botanical_family/:id", function (request, response) {
 // Retrieve all useful_part
 app.get("/useful_part", function (request, response) {
     dbConn.query("SELECT * FROM useful_part", function (error, results, fields) {
-      if (error) throw error;
-      return response.send({
-        error: false,
-        data: results,
-        message: "useful_part list.",
-      });
-    });
-  });
-  
-  // Retrieve useful_part with id
-  app.get("/useful_part/:id", function (request, response) {
-    let useful_part_id = request.params.id;
-    if (!useful_part_id) {
-      return response
-        .status(400)
-        .send({ error: true, message: "Please provide useful_part_id" });
-    }
-    dbConn.query(
-      "SELECT * FROM useful_part where id=?",
-      useful_part_id,
-      function (error, results, fields) {
         if (error) throw error;
         return response.send({
-          error: false,
-          data: results[0],
-          message: "useful_part list.",
+            error: false,
+            data: results,
+            message: "useful_part list.",
         });
-      }
+    });
+});
+
+// Retrieve useful_part with id
+app.get("/useful_part/:id", function (request, response) {
+    let useful_part_id = request.params.id;
+    if (!useful_part_id) {
+        return response
+            .status(400)
+            .send({ error: true, message: "Please provide useful_part_id" });
+    }
+    dbConn.query(
+        "SELECT * FROM useful_part where id=?",
+        useful_part_id,
+        function (error, results, fields) {
+            if (error) throw error;
+            return response.send({
+                error: false,
+                data: results[0],
+                message: "useful_part list.",
+            });
+        }
     );
-  });
+});

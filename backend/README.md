@@ -1,6 +1,6 @@
 # BACKEND
 
-
+@ivanaab i @msiladjev - ovdje napišite upute za pokretanje backenda
 
 # REST API
 

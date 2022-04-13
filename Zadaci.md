@@ -1,5 +1,5 @@
 
-1. Početni prozor - definiranje layouta (slika u pozadini, prijedlog boja, naslov,...) -  sbrozan, lukababic19, tkrznaric
+1. Početni prozor - definiranje layouta (slika u pozadini, prijedlog boja, naslov, gumb za startanje kviza) -  sbrozan, lukababic19, tkrznaric
 
 2. Dizajn dijela prozora za pitanje i odgovore, gumbi za provjeru odgovora i povratna informacija, te prijelaz 
  na iduće pitanje i završetak, postaviti i broj pitanja vidljiv - složiti komponente - dati prijedlog (u Quasaru) - tonko555
@@ -12,7 +12,7 @@
 
 	b) prikaz nekoliko botaničkih porodica - za odabrani id biljke (plant_id) - siladjev, babic
 	dohvatiti i prikazati njenu botaničku porodicu u komponenti radio gumb i
- 	odraditi ovo za	bilo koju odabranu biljku, npr. id=1i
+ 	odraditi ovo za	bilo koju odabranu biljku, npr. id=1
  
 	c) dohvatiti i prikazati random botaničke porodice - napraviti Quasar - eshaton
 	komponente QButton i RadioButton 

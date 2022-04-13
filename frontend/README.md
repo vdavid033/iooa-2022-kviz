@@ -29,3 +29,5 @@ Prijedlog: ako je odgovor točan radio se označi zelenom bojom a ako je kriv oz
 
 ![Snimka zaslona 2022-04-13 180930](https://user-images.githubusercontent.com/101420754/163224103-0e5d5193-ca01-48b1-95d6-5a0da0eb8be5.png)
 ![Snimka zaslona 2022-04-13 180917](https://user-images.githubusercontent.com/101420754/163224105-368d2773-07ce-435a-8e68-0362d6b7d2e4.png)
+
+Prijedlog kada je odgovor ispravan čuje se zvučni signal uspješnosti, a kada je odgovor neispravan čuje se zvučni signal neuspješnosti. Ujedno i tekst odgovora postaje zeleni ako je odgovor ispravan i crveni ako je neispravan. 

@@ -8,4 +8,4 @@ Primjer: http://localhost/plant_species/1
 
 ### http://localhost/botanical_family/:id
 Dohvaća jednu botaničku porodicu prema id.
-Primjer: http://localhost/botanical_family/:22
+Primjer: http://localhost/botanical_family/22

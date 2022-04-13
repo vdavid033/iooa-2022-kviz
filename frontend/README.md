@@ -14,3 +14,7 @@ Prijedlog za ispisivanje (ne)točnih odgovora: nakon odabira "Prihvati odgovor" 
 Prijedlog: iskočni prozor koji kaže točan/nije točan odgovor, i po potrebi izjavljuje koji je odgovor točan
 
 Prijedlog: Dodati dugme odustani/resetiraj kviz koje bi odvelo korinika na početnu stranicu. Nakon potvrde završetka ispita otvoriti skočnu formu prikaza bodova sa izbornikom printaj, zatvori, ili spremi odgovore.
+
+
+
+Prijedlog: prihvatiti točne odnosno netočne odgovore kao takve  te na kraju kviza ispisati redom koji odgovori su bili točni koji nisu.

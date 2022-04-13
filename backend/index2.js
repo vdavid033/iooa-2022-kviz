@@ -55,7 +55,7 @@ app.get("/useful_part/:id", function (request, response) {
   );
 });
 
-<<<<<<< HEAD
+
 // Dohvat plant_species(biljna vrsta) preko id
 app.get("/plant_species/:id", function (request, response) {
   let plant_species_id = request.params.id;
@@ -78,20 +78,6 @@ app.get("/plant_species/:id", function (request, response) {
   );
 });
 
-
-=======
-// Dohvat svih biljnih porodica
-app.get("/botanical_family", function (request, response) {
-  dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
-    if (error) throw error;
-    return response.send({
-      error: false,
-      data: results,
-      message: "botanical_family list.",
-    });
-  });
-});
->>>>>>> f9a3ea5619528834868d5dc2e15060bcd4e073c5
 
 // Dohvat biljne porodice za jednu biljnu vrstu #21
 app.get("/botanical_family_plant_species/:id", function (request, response) {

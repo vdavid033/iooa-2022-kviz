@@ -7,3 +7,6 @@ Na temelju mockupa od @eshaton saljem sliku frontenda. Korištene komponente su:
 Prijedlog na temelju mockupa
 
 ![Snimka zaslona 2022-04-13 175851](https://user-images.githubusercontent.com/101420754/163221781-c0ddc2ab-d02d-474f-998c-d22bccb87039.png)
+
+
+Prijedlog za ispisivanje (ne)točnih odgovora: nakon odabira "Prihvati odgovor" se pored svakog od ponuđenih odgovora pojavljuje kvačica (ako je točan), x ako je netočan, a korisnikov odgovor se istakne (npr. druga boja pozadine).

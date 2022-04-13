@@ -55,28 +55,6 @@ app.get("/useful_part/:id", function (request, response) {
   );
 });
 
-// Dohvat plant_species(biljna vrsta) preko id
-app.get("/plant_species/:id", function (request, response) {
-  let plant_species_id = request.params.id;
-  if (!plant_species_id) {
-    return response
-      .status(400)
-      .send({ error: true, message: "Please provide plant_species_id" });
-  }
-  dbConn.query(
-    "SELECT * FROM plant_species where id=?",
-    plant_species_id,
-    function (error, results, fields) {
-      if (error) throw error;
-      return response.send({
-        error: false,
-        data: results[0],
-        message: "plant_species list.",
-      });
-    }
-  );
-});
-
 // Dohvat svih biljnih porodica
 app.get("/botanical_family", function (request, response) {
   dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {

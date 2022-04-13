@@ -46,3 +46,15 @@ dbConn.query('SELECT * FROM plant_species where id=?', plant_species_id, functio
     });
     module.exports = app;
     
+
+    // Dohvat svih biljnih porodica #19
+app.get("/botanical_family", function (request, response) {
+    dbConn.query("SELECT * FROM botanical_family", function (error, results, fields) {
+      if (error) throw error;
+      return response.send({
+        error: false,
+        data: results,
+        message: "botanical_family list.",
+      });
+    });
+  });

@@ -20,4 +20,5 @@ Prijedlog: Dodati dugme odustani/resetiraj kviz koje bi odvelo korinika na poče
 Prijedlog: prihvatiti točne odnosno netočne odgovore kao takve  te na kraju kviza ispisati redom koji odgovori su bili točni koji nisu.
 
 Prijedlog 1: nakon odabira "Prihvati odgovor" se slova netočnih odgovora promjene u crvenu boju, a točan odgovor neka bude zelen.
+
 Prijedlog 2: kada se odgovori na sva pitanja i odabere "Završi i predaj", ispisuju se sva pitanja sa odgovorima i kraj pitanja na koje je odgovoreno točno bude kvačica, a ako je odgovoreno krivo bude X i ispiše se točan odgovor

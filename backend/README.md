@@ -23,3 +23,5 @@ Primjer: http://localhost/plant_species_by_bf/22
 
 Dohvat biljne porodice za jednu biljnu vrstu
 Primjer: htp://localhost/botanical_family_plant_species/:id
+
+@pjuric - dovršiti!

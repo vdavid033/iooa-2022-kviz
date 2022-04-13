@@ -22,3 +22,5 @@ Prijedlog: prihvatiti točne odnosno netočne odgovore kao takve  te na kraju kv
 Prijedlog: nakon odabira "Prihvati odgovor" se slova netočnih odgovora promjene u crvenu boju, a točan odgovor neka bude zelen.
 
 Prijedlog: kada se odgovori na sva pitanja i odabere "Završi i predaj", ispisuju se sva pitanja sa odgovorima i kraj pitanja na koje je odgovoreno točno bude kvačica, a ako je odgovoreno krivo bude X i ispiše se točan odgovor
+
+Prijedlog za ispis točnih/netočnih odgovora, ukoliko korisnik odgovori točno pojavi se :) zelene boje pored odabranog odgovora, ukoliko je netočno :( crvene boje pored odabranog odgovora.

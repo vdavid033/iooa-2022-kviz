@@ -9,3 +9,8 @@ Primjer: http://localhost/plant_species/1
 ### http://localhost/botanical_family/:id
 Dohvaća jednu botaničku porodicu prema id.
 Primjer: http://localhost/botanical_family/22
+
+### http://localhost/plant_species_by_bf/:id
+
+Dohvaća biljne vrste za botaničku porodicu s id-jem  
+Primjer: http://localhost/plant_species_by_bf/22

@@ -33,9 +33,15 @@ Svaki student radi na vlastitoj grani i sve izmjene postavlja u nju.
 
 ## Instalacija Quasar frameworka
 
+Instalaciju radite unutar frontend foldera  
+_cd frontend_
+
+Instalacija Quasar frameworka  
 _npm i -g @quasar/cli_
+
+Inicijalizacija (početno postavljanje) Quasar frameworka  
 _npm init quasar_
- ostavite sve predloženo (samo Enter za dalje), osim u jednom koraku kad odabirete ESLint, Axios i Vue-i18n.
+Prilikom inicijalizacije ostavite sve predloženo (samo Enter za dalje), osim u jednom koraku kad odabirete ESLint, Axios i Vue-i18n.
  
  ## Pokretanje Quasar frameworka
 

@@ -12,17 +12,24 @@ Za pokretanje backenda je potrebno imati instaliran VSC, Git i Node, te je potre
 1.	Na desktopu kreirati novu mapu.
 2.	Otvoriti VSC i otvoriti novu kreiranu mapu.
 3.	U VSC-u otvoriti terminal i klonirati repozitorij kojem pristupamo. Na GitHubu kopirati link repozitorija kojem pristupamo te u naredbi clone zalijepiti link. Naredba:
+        
         git clone https://github.com/vdavid033/iooa-2022.git
 4.	Pozicionirati se u kloniranu mapu naredbom:
+        
         cd iooa-2022
 5.	Pozicionirati se na željenu granu, točnije development branch s naredbom:
+      
       git checkout development
 6.	Pozicionirati se na backend mapu naredbom:
+      
       cd backend
 7.	Instalirati express i mysql naredbama:
+      
       npm install express
+      
       npm install mysql
 8.	Pokrenuti određenu datoteku naredbom 
+      
       node index.js
 (index.js je datoteka koju želimo pokrenuti)
  

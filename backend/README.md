@@ -4,7 +4,7 @@
 # UPUTE ZA POKRETANJE BACKENDA
 Za pokretanje backenda je potrebno imati instaliran VSC, Git i Node, te je potrebno imati kreiran račun na GitHubu, ukoliko neke stavke nisu instalirane na računalu mogu se preuzeti sa slijedećih poveznica:
   -	  Instalacija Visual Studio Code https://code.visualstudio.com/Download 
-  - 	Instalacija Git https://git-scm.com/download 
+  -   Instalacija Git https://git-scm.com/download 
   -	  Instalacija Node https://nodejs.org/en/ 
   -	  Kreiranje računa na Githubu https://github.com/ 
  

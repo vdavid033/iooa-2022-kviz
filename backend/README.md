@@ -28,7 +28,7 @@ Za pokretanje backenda je potrebno imati instaliran VSC, Git i Node, te je potre
       
         npm install express
       
-       npm install mysql
+        npm install mysql
 8.	Pokrenuti određenu datoteku naredbom 
       
         node index.js

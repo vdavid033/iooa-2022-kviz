@@ -19,22 +19,23 @@ Za pokretanje backenda je potrebno imati instaliran VSC, Git i Node, te je potre
         cd iooa-2022
 5.	Pozicionirati se na željenu granu, točnije development branch s naredbom:
       
-      git checkout development
+      
+        git checkout development
 6.	Pozicionirati se na backend mapu naredbom:
       
-      cd backend
+        cd backend
 7.	Instalirati express i mysql naredbama:
       
-      npm install express
+        npm install express
       
-      npm install mysql
+       npm install mysql
 8.	Pokrenuti određenu datoteku naredbom 
       
-      node index.js
+        node index.js
 (index.js je datoteka koju želimo pokrenuti)
  
 9.	Za zaustavljanje se koristi naredba pomoću tipki Control i C:  
-      Ctrl + C
+        Ctrl + C
 
 
 # REST API

@@ -21,9 +21,9 @@ app.get('/plant_species', function (request, response) {
     dbConn.query('SELECT * FROM plant_species', function (error, results, fields) {
         if (error) throw error;
         return response.send({
-            error: false, data: results, message: 'plant_species_list.'
+            error: false, data: results, message: 'plant_species_list.'          
+         });
         });
-    });
 
     module.exports = app;
 
@@ -161,4 +161,4 @@ app.get("/botanical_family_plant_species/:id", function (request, response) {
       }
     );
   });
-  
+

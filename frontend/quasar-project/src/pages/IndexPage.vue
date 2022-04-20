@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <div class="fit row wrap justify-center items-start content-center">
     <div class="row">
-      <div class="col"> <img alt="Quasar logo" src="https://scx1.b-cdn.net/csz/news/800a/2017/worldsbotani.jpg"></div>
+      <div class="col"> <img alt="Quasar logo" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/C130/production/_123665494_mediaitem123664184.jpg"></div>
     </div>
 
     <div class="row">

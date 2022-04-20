@@ -3,7 +3,6 @@
     <div class="q-px-sm">
      1. Odaberite hrvatski i latinski naziv biljne porodice za prikazanu biljnu vrstu  <strong>{{ shape }}</strong>
     </div>
-    <template>
   <div class="q-pa-lg">
     <q-option-group
       v-model="group"

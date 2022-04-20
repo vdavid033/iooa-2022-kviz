@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-toolbar-title class="text-weight-medium text-center text-h3">
           <q-avatar>
-            <img src="https://images.news18.com/ibnlive/uploads/2021/08/new-mermaid-plant-species-in-andaman-16292679803x2.png">
+            <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/C130/production/_123665494_mediaitem123664184.jpg">
           </q-avatar>
           Dobrodošli u kviz o biljnim vrstama
         </q-toolbar-title>

@@ -6,7 +6,7 @@
     </div>
 
     <div class="row">
-            <q-btn size="large" color="secondary" label="Započnite kviz" />
+            <q-btn size="large" color="positive" label="Započnite kviz" />
     </div>
   </div>
   </q-page>

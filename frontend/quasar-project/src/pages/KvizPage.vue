@@ -3,8 +3,7 @@
      <q-btn href="http://agro.veleri.hr/biljne-vrste/" 
      label="Početna stranica"  
      color="green" 
-     icon="home" 
-     />
+     icon="home"/>
 
   <div class="q-pa-md q-gutter-sm">
     <q-btn color="white" text-color="black" label="Prethodno" />
@@ -79,6 +78,7 @@
       </q-card>
     </q-dialog>
   </div>
+</div>
 </template>
 
 <script>

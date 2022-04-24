@@ -5,7 +5,7 @@
       <div class="col"> <img alt="Quasar logo" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/C130/production/_123665494_mediaitem123664184.jpg"></div>
     </div>
 
-    <div class="row">
+    <div class="fit row justify-center">
             <q-btn size="large" color="positive" label="Započnite kviz" />
     </div>
   </div>

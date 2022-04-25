@@ -1,13 +1,6 @@
 <template>
 
-<div class="absolute-top-right">
-<q-btn href="http://agro.veleri.hr/biljne-vrste/" 
-        label="Početna stranica"  
-        color="white"
-        flat 
-        icon="home" 
-        />
-
+<div class="relative fixed-center">
   <div class="q-pa-md q-gutter-sm">
     <q-btn color="white" text-color="black" label="Prethodno" />
     <q-btn-group>
@@ -20,7 +13,7 @@
   </div>
   <div class="q-pa-md">
     <div class="q-col-gutter-md row items-start">
-      <div class="col-4">
+      <div class="col-4 full-width">
         5. Pitanje - Kojoj botaničkoj porodici pripada ljubičica?
         <q-img
           src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"

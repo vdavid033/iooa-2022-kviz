@@ -9,7 +9,15 @@
           </q-avatar>
           Dobrodošli u kviz o biljnim vrstama
         </q-toolbar-title>
+         
+        <q-btn href="http://agro.veleri.hr/biljne-vrste/" 
+        label="Početna stranica"  
+        color="white"
+        flat 
+        icon="home" 
+        />
       </q-toolbar>
+     
     </q-header>
 
     <q-page-container>

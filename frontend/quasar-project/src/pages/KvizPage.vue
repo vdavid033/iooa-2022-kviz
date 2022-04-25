@@ -1,9 +1,12 @@
 <template>
+
 <div class="absolute-top-right">
-     <q-btn href="http://agro.veleri.hr/biljne-vrste/" 
-     label="Početna stranica"  
-     color="green" 
-     icon="home"/>
+<q-btn href="http://agro.veleri.hr/biljne-vrste/" 
+        label="Početna stranica"  
+        color="white"
+        flat 
+        icon="home" 
+        />
 
   <div class="q-pa-md q-gutter-sm">
     <q-btn color="white" text-color="black" label="Prethodno" />

@@ -89,5 +89,20 @@ export default {
 
     }
   },
-};
+  methods:
+  {
+    async allPlants() {
+      const plants = await this.$axios.get(
+      `http://localhost:3000/plant_species/`
+      );
+      console.log(plants.data.data[0]);
+      this.plants = plants.data.data;
+      }
+  },
+  data() {
+    return {
+    plants: "",
+      }
+  }
+}
 </script>

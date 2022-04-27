@@ -22,70 +22,64 @@
       </div>
     </div>
   </div>
-  <div class="q-pa-md">
-     <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="violaceae" color="green" @click = "selection = true"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Violaceae</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="amaryllidaceae" color="red" @click = "selection = false"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Amaryllidaceae</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="asteraceae" color="red" @click = "selection = false"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Asteraceae</q-item-label>
-        </q-item-section>
-      </q-item>
+     <div class="q-pa-lg">
+      <q-option-group id="grupa"
+        v-model="group"
+        :options="options"
+        color="primary"
+      />
   </div>
   <div class="q-pa-md q-gutter-sm">
     <q-btn color="white" text-color="black" label="Prihvati odgovor" @click="confirm = true"/>
     <q-btn color="white" text-color="black" label="Završi i predaj" />
   </div>
-  <div>
-    <q-dialog v-model="confirm" persistent>
-      <q-card>
-        <q-card-section class="q-pt-none">
-          Odabrali ste <strong> {{ color }}</strong>
-        </q-card-section>
-        <q-card-section>
-          Točan odgovor je violaceae
-        </q-card-section>
-        <q-card-section>
-          Vaš odgovor je <strong> {{selection}} </strong>
-        </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
-        </q-card-actions>
-
-      </q-card>
-    </q-dialog>
-  </div>
 </div>
 </template>
 
 <script>
 import { ref } from "vue";
+var botanicList = new Array;
+function getRandomBotanicalPlant(){
+
+    const json = require("./botanical_family.json");
+
+    for(var i=0; i<4; i++)
+    {
+      var botanicObject = {}
+      var index = Math.round(Math.random() * (json["data"].length - 1));
+      botanicObject["id"] = json["data"][index].id;
+      botanicObject["croatian_name"] = json["data"][index].croatian_name;
+      botanicObject["latin_name"] = json["data"][index].latin_name;
+      botanicList.push(botanicObject);
+    }
+
+    // console.log(botanicList);
+    // return botanicList;
+}
+getRandomBotanicalPlant();
 
 export default {
   setup() {
     return {
       confirm: ref(false),
-      color: ref("cyan"),
       selection: ref(false),
+      group: ref('op1'),
+
+      options: [
+        {
+          label: botanicList[1].croatian_name,
+          value: 'op1'
+        },
+        {
+          label: botanicList[2].croatian_name,
+          value: 'op2'
+        },
+        {
+          label: botanicList[3].croatian_name,
+          value: 'op3'
+        }
+      ],
 
     }
   },

@@ -5,7 +5,7 @@ const dbConfig = require("./db.config.js");
 var mysql = require('mysql');
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:8080'
+    origin: '*'
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

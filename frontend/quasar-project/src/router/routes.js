@@ -5,7 +5,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'kviz', component: () => import('pages/KvizPage.vue') }
+      { path: 'kviz', component: () => import('pages/KvizPage.vue') },
+      { path: 'kviz1', component: () => import('pages/KvizPage1.vue') }
     ]
   },
 

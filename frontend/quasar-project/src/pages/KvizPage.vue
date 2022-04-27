@@ -9,12 +9,12 @@
       <q-btn color="secondary" glossy label="3" />
       <q-btn color="secondary" glossy label="4" />
     </q-btn-group>
-    <q-btn color="white" text-color="black" label="Sljedece" />
+    <q-btn color="white" text-color="black" label="Sljedece"  @click="generateQ" />
   </div>
   <div class="q-pa-md">
     <div class="q-col-gutter-md row items-start">
-      <div class="col-4 full-width">
-        5. Pitanje - Kojoj botaničkoj porodici pripada ljubičica?
+      <div id class="col-4 full-width">
+        <div id="pitanje"></div>
         <q-img
           src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
           :ratio="16 / 9"
@@ -22,87 +22,113 @@
       </div>
     </div>
   </div>
-  <div class="q-pa-md">
-     <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="violaceae" color="green" @click = "selection = true"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Violaceae</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="amaryllidaceae" color="red" @click = "selection = false"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Amaryllidaceae</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section avatar>
-          <q-radio v-model="color" val="asteraceae" color="red" @click = "selection = false"/>
-        </q-item-section>
-        <q-item-section>
-          <q-item-label>Asteraceae</q-item-label>
-        </q-item-section>
-      </q-item>
+     <div class="q-pa-lg">
+      <q-option-group id="grupa"
+        v-model="group"
+        :options="options"
+        color="primary"
+      />
   </div>
   <div class="q-pa-md q-gutter-sm">
     <q-btn color="white" text-color="black" label="Prihvati odgovor" @click="confirm = true"/>
     <q-btn color="white" text-color="black" label="Završi i predaj" />
   </div>
-  <div>
-    <q-dialog v-model="confirm" persistent>
-      <q-card>
-        <q-card-section class="q-pt-none">
-          Odabrali ste <strong> {{ color }}</strong>
-        </q-card-section>
-        <q-card-section>
-          Točan odgovor je violaceae
-        </q-card-section>
-        <q-card-section>
-          Vaš odgovor je <strong> {{selection}} </strong>
-        </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
-        </q-card-actions>
-
-      </q-card>
-    </q-dialog>
-  </div>
 </div>
 </template>
 
 <script>
 import { ref } from "vue";
+var botanicList = new Array;
+function getRandomBotanicalPlant(){
+
+    const json = require("./botanical_family.json");
+
+    for(var i=0; i<4; i++)
+    {
+      var botanicObject = {}
+      var index = Math.round(Math.random() * (json["data"].length - 1));
+      botanicObject["id"] = json["data"][index].id;
+      botanicObject["croatian_name"] = json["data"][index].croatian_name;
+      botanicObject["latin_name"] = json["data"][index].latin_name;
+      botanicList.push(botanicObject);
+    }
+
+    // console.log(botanicList);
+    // return botanicList;
+}
+getRandomBotanicalPlant();
 
 export default {
   setup() {
     return {
       confirm: ref(false),
-      color: ref("cyan"),
       selection: ref(false),
+      group: ref('op1'),
+
+      options: [
+        {
+          label: botanicList[1].croatian_name,
+          value: 'op1'
+        },
+        {
+          label: botanicList[2].croatian_name,
+          value: 'op2'
+        },
+        {
+          label: botanicList[3].croatian_name,
+          value: 'op3'
+        }
+      ],
 
     }
   },
   methods:
   {
-    async allPlants() {
+ /*   async allPlants() {
       const plants = await this.$axios.get(
       `http://localhost:3000/plant_species/`
       );
       console.log(plants.data.data[0]);
       this.plants = plants.data.data;
+      },  */
+   generateQ(){
+      
+        var myNode=document.getElementById("pitanje");
+          while (myNode.lastChild) {
+        myNode.removeChild(myNode.lastChild);
       }
+        var i="Kojoj botaničkoj porodici pripada ";
+        var id=getRandomPlantSpeciesID();
+        document.getElementById("pitanje").append(i);
+        document.getElementById("pitanje").append(id);
+      
+      }
+
   },
-  data() {
-    return {
-    plants: "",
-      }
-  }
+ /* data() {
+  //  return {
+   // plants: "",
+     // }
+  }  */
 }
+const pitanje = document.getElementById("pitanje");
+function getRandomPlantSpeciesID()
+ {
+     // Ucitavanje json datoteke
+     const jsonObject = require('./plant_species.json');
+     
+     // varijabla u kojoj ce se premiti random id
+     var randomPlantID = jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)+1];
+    console.log(jsonObject["data"].length);
+     // ispis na konzolu za provjeru
+    // console.log(randomPlantID.id);
+   // console.log(randomPlantID["id"]+[jsonObject.data[randomPlantID.id].croatian_name]);
+   
+    //console.log(randomPlantID.id);
+  
+      
+     // rezultat
+     return jsonObject.data[randomPlantID["id"]].croatian_name;
+ }
 </script>

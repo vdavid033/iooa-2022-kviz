@@ -123,18 +123,13 @@ function getRandomPlantSpeciesID()
  {
      // Ucitavanje json datoteke
      const jsonObject = require('./plant_species.json');
+     var jsonLength=jsonObject["data"].length;
+     
      
      // varijabla u kojoj ce se premiti random id
-     var randomPlantID = jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)+1];
-    console.log(jsonObject["data"].length);
-     // ispis na konzolu za provjeru
-    // console.log(randomPlantID.id);
-   // console.log(randomPlantID["id"]+[jsonObject.data[randomPlantID.id].croatian_name]);
-   
-    //console.log(randomPlantID.id);
-  
-      
+     var randomPlantID = jsonObject["data"][Math.floor(Math.random() * (jsonObject["data"].length))];
+    
      // rezultat
-     return jsonObject.data[randomPlantID["id"]].croatian_name;
+     return [randomPlantID.croatian_name];
  }
 </script>

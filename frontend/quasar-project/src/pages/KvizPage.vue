@@ -9,12 +9,12 @@
       <q-btn color="secondary" glossy label="3" />
       <q-btn color="secondary" glossy label="4" />
     </q-btn-group>
-    <q-btn color="white" text-color="black" label="Sljedece" />
+    <q-btn color="white" text-color="black" label="Sljedece"  @click="generateQ" />
   </div>
   <div class="q-pa-md">
     <div class="q-col-gutter-md row items-start">
-      <div class="col-4 full-width">
-        5. Pitanje - Kojoj botaničkoj porodici pripada ljubičica?
+      <div id class="col-4 full-width">
+        <div id="pitanje"></div>
         <q-img
           src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
           :ratio="16 / 9"
@@ -91,18 +91,50 @@ export default {
   },
   methods:
   {
-    async allPlants() {
+ /*   async allPlants() {
       const plants = await this.$axios.get(
       `http://localhost:3000/plant_species/`
       );
       console.log(plants.data.data[0]);
       this.plants = plants.data.data;
+      },  */
+   generateQ(){
+      
+        var myNode=document.getElementById("pitanje");
+          while (myNode.lastChild) {
+        myNode.removeChild(myNode.lastChild);
       }
+        var i="Kojoj botaničkoj porodici pripada ";
+        var id=getRandomPlantSpeciesID();
+        document.getElementById("pitanje").append(i);
+        document.getElementById("pitanje").append(id);
+      
+      }
+
   },
-  data() {
-    return {
-    plants: "",
-      }
-  }
+ /* data() {
+  //  return {
+   // plants: "",
+     // }
+  }  */
 }
+const pitanje = document.getElementById("pitanje");
+function getRandomPlantSpeciesID()
+ {
+     // Ucitavanje json datoteke
+     const jsonObject = require('./plant_species.json');
+     
+     // varijabla u kojoj ce se premiti random id
+     var randomPlantID = jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)+1];
+    console.log(jsonObject["data"].length);
+     // ispis na konzolu za provjeru
+    // console.log(randomPlantID.id);
+   // console.log(randomPlantID["id"]+[jsonObject.data[randomPlantID.id].croatian_name]);
+   
+    //console.log(randomPlantID.id);
+  
+      
+     // rezultat
+     return jsonObject.data[randomPlantID["id"]].croatian_name;
+ }
 </script>

@@ -1,5 +1,9 @@
+const cors = require('cors');
 var express = require('express');
 var app = express();
+app.use(cors({
+    origin: '*'
+}));
 var bodyParser = require('body-parser');
 const dbConfig = require("./db.config.js");
 var mysql = require('mysql');

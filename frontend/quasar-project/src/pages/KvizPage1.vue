@@ -1,84 +1,187 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-card class="my-card">
-      <q-card-section>
-        {{ lorem_dugme }}
-      </q-card-section>
-    </q-card>
-    <div class="q-pa-md q-gutter-sm">
-      <q-btn @click="reloadPage()" color="white" text-color="black" label="Novo pitanje" />
+
+<div class="relative fixed-center">
+  <div class="q-pa-md q-gutter-sm">
+    <q-btn color="white" text-color="black" label="Prethodno" />
+    <q-btn-group>
+      <q-btn color="secondary" glossy label="1" />
+      <q-btn color="secondary" glossy label="2" />
+      <q-btn color="secondary" glossy label="3" />
+      <q-btn color="secondary" glossy label="4" />
+    </q-btn-group>
+    <q-btn color="white" text-color="black" label="Sljedece"  @click="getRandomBotanicalPlant(); generateQ();"/>
+  </div>
+  <div class="q-pa-md">
+    <div class="q-col-gutter-md row items-start">
+      <div id class="col-4 full-width">
+        <div id="pitanje"></div>
+        <q-img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
+          :ratio="16 / 9"
+        />
+      </div>
     </div>
-    <div class="q-pa-lg">
-      <q-option-group id="grupa"
-        v-model="group"
-        :options="options"
-        color="primary"
-      />
-    </div>
-    <q-card class="my-card">
-      <q-card-section>
-        {{ lorem_radio_lista }}
-      </q-card-section>
-    </q-card>
-  </q-page>
+  </div>
+  <!--Radio dugmad-->
+  <div class="q-pa-md">
+    <q-list>
+      <!--
+        Rendering a <label> tag (notice tag="label")
+        so QRadios will respond to clicks on QItems to
+        change Toggle state.
+      -->
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio v-model="color" val="teal" color="teal" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label id="option-0-random"></q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio v-model="color" val="orange" color="orange" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label id="option-1-random"></q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar top>
+          <q-radio v-model="color" val="cyan" color="cyan" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label id="option-2-random"></q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
+  </div>
+  <div class="q-pa-md q-gutter-sm">
+    <q-btn color="white" text-color="black" label="Prihvati odgovor" @click="confirm = true"/>
+    <q-btn color="white" text-color="black" label="Završi i predaj" />
+  </div>
+
+</div>
 </template>
 
 <script>
-import { ref } from 'vue'
-var botanicList = new Array;
-function getRandomBotanicalPlant(){
-    
-    const json = require("./botanical_family.json");
-    
-    for(var i=0; i<4; i++)
-    {
-      var botanicObject = {}
-      var index = Math.round(Math.random() * (json["data"].length - 1));
-      botanicObject["id"] = json["data"][index].id;
-      botanicObject["croatian_name"] = json["data"][index].croatian_name;
-      botanicObject["latin_name"] = json["data"][index].latin_name;
-      botanicList.push(botanicObject);
-    } 
+import { ref } from "vue";
 
-    // console.log(botanicList);
-    // return botanicList;
-}
-getRandomBotanicalPlant();
+// varijabla u koju se sprema naziv biljke iz random generiranog pitanja
+var randomGeneratedPlant;
+
 export default {
-  methods: {
-    reloadPage() {
-      window.location.reload();
+  setup() {
+    return {
+      color: ref('cyan')
     }
   },
-  setup () {
-    return {
-      group: ref('op1'),
+  methods:
+  {
+ /*   async allPlants() {
+      const plants = await this.$axios.get(
+      `http://localhost:3000/plant_species/`
+      );
+      console.log(plants.data.data[0]);
+      this.plants = plants.data.data;
+      },  */
+   generateQ(){
+      
+        var myNode=document.getElementById("pitanje");
+          while (myNode.lastChild) {
+        myNode.removeChild(myNode.lastChild);
+      }
+        var i="Kojoj botaničkoj porodici pripada ";
+        var id=getRandomPlantSpeciesID();
+        document.getElementById("pitanje").append(i);
+        document.getElementById("pitanje").append(id);
+      
+      },
 
-      options: [
+    getRandomBotanicalPlant()
+    {
+
+      const json = require("./botanical_family.json");
+      //privremena lista
+      var botanicList = new Array;
+      for(var i=0; i<3; i++)
+      {
+        var botanicObject = {}
+        var index = Math.round(Math.random() * (json["data"].length - 1));
+        botanicObject["id"] = json["data"][index].id;
+        botanicObject["croatian_name"] = json["data"][index].croatian_name;
+        botanicObject["latin_name"] = json["data"][index].latin_name;
+        botanicList.push(botanicObject);
+      }
+      // u ova dva elementa postavlja se random vrijednost iz botanical_family,
+      // to su dva radio botuna
+      if (botanicList[0].croatian_name != botanicList[1].croatian_name)
+      {
+        // min = 1, max = 4
+        var randomNumber = this.generateRandomNumber(1, 4);
+        switch(randomNumber)
         {
-          label: botanicList[1].croatian_name,
-          value: 'op1'
-        },
-        {
-          label: botanicList[2].croatian_name,
-          value: 'op2'
-        },
-        {
-          label: botanicList[3].croatian_name,
-          value: 'op3'
+          case 1:
+            var tempList = [0, 1, 2];
+            break;
+          case 2:
+            var tempList = [0, 2, 1];
+            break;
+          case 3:
+            var tempList = [1, 0, 2];
+            break;
+          case 4:
+            var tempList = [1, 2, 0];
+            break;
+          default:
+            break;
         }
-      ],
-      lorem_dugme: 'Pritiskom na gumb pozvati će se metoda koja bi trebala uzeti dvije nasumične vrijednosti iz json datoteke sa popisom svih botaničkih vrsti, te jednu koja je točan odgovor i nasumično popuniti "value" properti QOptionGroup sa desne strane. Nakon prvog pokretanja ove metode, vrijednosti se spremaju u pribremenu varijablu te se , ukoliko se korisnik vrati na isto pitanje, tada vrijednosti uzimaju iz nje.',
-      lorem_radio_lista: 'getRandomBotanicalPlant()'
-      //lorem_radio_lista: 'Za prijedloge sa odgovorima koristila bi se komponenta QOptionGroup. Implementacija se može vidjeti u samom kodu.'
+         
+        document.getElementById("option-" + tempList[0] + "-random").innerHTML = botanicList[0].croatian_name;
+        document.getElementById("option-" + tempList[1] + "-random").innerHTML = botanicList[1].croatian_name;
+        document.getElementById("option-"+ tempList[2] + "-random").innerHTML = "Tocan odgovor!"; 
+      }
+    },
+
+    getCorrectAnswerFromBotanicalFamily()
+    {
+        // TODO uzeti varijablu randomGeneratedPlant i potražiti njenu botanicku vrstu
+        // i ispisati je u jednu labelu od nasumucnog radio botuna
+    },
+
+    // helper funkcije
+    reloadPage() {
+      window.location.reload();
+    },
+
+    generateRandomNumber(min, max)
+    {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
-  }
+  },
+ /* data() {
+  //  return {
+   // plants: "",
+     // }
+  }  */
 }
+const pitanje = document.getElementById("pitanje");
+function getRandomPlantSpeciesID()
+ {
+     // Ucitavanje json datoteke
+     const jsonObject = require('./plant_species.json');
+     var jsonLength=jsonObject["data"].length;
 
+     // varijabla u kojoj ce se premiti random id
+     var randomPlantID = jsonObject["data"][Math.floor(Math.random() * (jsonObject["data"].length))];
+
+     // sprema se i u globalnu varijablu za generiranje tocnog odgovora
+     randomGeneratedPlant = randomPlantID.croatian_name;
+
+     // rezultat
+     return [randomPlantID.croatian_name];
+ }
 </script>
-
-<style lang="sass" scoped>
-.my-card
-  width: 100%
-  max-width: 250px
-</style>

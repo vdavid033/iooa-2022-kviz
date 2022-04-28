@@ -9,7 +9,7 @@
       <q-btn color="secondary" glossy label="3" />
       <q-btn color="secondary" glossy label="4" />
     </q-btn-group>
-    <q-btn color="white" text-color="black" label="Sljedece"  @click="getRandomBotanicalPlant"/>
+    <q-btn color="white" text-color="black" label="Sljedece"  @click="getRandomBotanicalPlant(); generateQ();"/>
   </div>
   <div class="q-pa-md">
     <div class="q-col-gutter-md row items-start">
@@ -36,7 +36,7 @@
           <q-radio v-model="color" val="teal" color="teal" />
         </q-item-section>
         <q-item-section>
-          <q-item-label id="option-1-random">{{ optionRandom1 }}</q-item-label>
+          <q-item-label id="option-0-random"></q-item-label>
         </q-item-section>
       </q-item>
 
@@ -45,7 +45,7 @@
           <q-radio v-model="color" val="orange" color="orange" />
         </q-item-section>
         <q-item-section>
-          <q-item-label id="option-2-random"></q-item-label>
+          <q-item-label id="option-1-random"></q-item-label>
         </q-item-section>
       </q-item>
 
@@ -54,7 +54,7 @@
           <q-radio v-model="color" val="cyan" color="cyan" />
         </q-item-section>
         <q-item-section>
-          <q-item-label id="option-3-random"></q-item-label>
+          <q-item-label id="option-2-random"></q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
@@ -70,7 +70,6 @@
 <script>
 import { ref } from "vue";
 
-var botanicList = new Array;
 // varijabla u koju se sprema naziv biljke iz random generiranog pitanja
 var randomGeneratedPlant;
 
@@ -106,7 +105,8 @@ export default {
     {
 
       const json = require("./botanical_family.json");
-
+      //privremena lista
+      var botanicList = new Array;
       for(var i=0; i<3; i++)
       {
         var botanicObject = {}
@@ -120,22 +120,47 @@ export default {
       // to su dva radio botuna
       if (botanicList[0].croatian_name != botanicList[1].croatian_name)
       {
-        document.getElementById("option-1-random").innerHTML = botanicList[0].croatian_name;
-        document.getElementById("option-2-random").innerHTML = botanicList[1].croatian_name;
-        return;
-      }
-
-      else
-      {
-        getRandomBotanicalPlant();
+        // min = 1, max = 4
+        var randomNumber = this.generateRandomNumber(1, 4);
+        switch(randomNumber)
+        {
+          case 1:
+            var tempList = [0, 1, 2];
+            break;
+          case 2:
+            var tempList = [0, 2, 1];
+            break;
+          case 3:
+            var tempList = [1, 0, 2];
+            break;
+          case 4:
+            var tempList = [1, 2, 0];
+            break;
+          default:
+            break;
+        }
+         
+        document.getElementById("option-" + tempList[0] + "-random").innerHTML = botanicList[0].croatian_name;
+        document.getElementById("option-" + tempList[1] + "-random").innerHTML = botanicList[1].croatian_name;
+        document.getElementById("option-"+ tempList[2] + "-random").innerHTML = "Tocan odgovor!"; 
       }
     },
 
     getCorrectAnswerFromBotanicalFamily()
     {
+        // TODO uzeti varijablu randomGeneratedPlant i potražiti njenu botanicku vrstu
+        // i ispisati je u jednu labelu od nasumucnog radio botuna
+    },
 
+    // helper funkcije
+    reloadPage() {
+      window.location.reload();
+    },
+
+    generateRandomNumber(min, max)
+    {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
-
   },
  /* data() {
   //  return {

@@ -97,11 +97,11 @@
       <q-dialog v-model="zavrsniPopup">
         <q-card>
           <q-card-section>
-            <div class="text-h6">Izvjestaj</div>
+            <div class="text-h6">Rezultat</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Tekst ide tu! </q-card-section>
-
+          <q-card-section class="q-pt-none"> Broj tocnih odgovora: {{ brojTocnih }}  </q-card-section>
+           <q-card-section class="q-pt-none"> Broj netocnih odgovora: {{ brojNetocnih }}  </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
           </q-card-actions>
@@ -117,6 +117,8 @@ import { ref } from "vue";
 // varijabla u koju se sprema naziv biljke iz random generiranog pitanja
 var randomGeneratedPlant;
 var tocnostOdgovora = "Netočno";
+var brojTocnih ="2";
+var brojNetocnih = "1";
 
 export default {
   setup() {
@@ -124,6 +126,7 @@ export default {
       color: ref("cyan"),
       alert: ref(false),
       zavrsniPopup: ref(false),
+      brojTocnih,brojNetocnih,
       tocnostOdgovora,
       if() {
         tocnostOdgovora = "Točno";

@@ -7,7 +7,8 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'kviz', component: () => import('pages/KvizPage.vue') },
       { path: 'kviz1', component: () => import('pages/KvizPage1.vue') },
-      { path: 'kviz2', component: () => import('pages/KvizPage2.vue') }
+      { path: 'kviz2', component: () => import('pages/KvizPage2.vue') },
+      { path: 'kviz3', component: () => import('pages/KvizPage3.vue') }
     ]
   },
 

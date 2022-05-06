@@ -14,7 +14,7 @@
         label="Sljedece"
         @click="
           getRandomBotanicalPlant();
-          generateQ();
+          randomPlant();
         "
       />
     </div>
@@ -100,8 +100,12 @@
             <div class="text-h6">Rezultat</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Broj tocnih odgovora: {{ brojTocnih }}  </q-card-section>
-           <q-card-section class="q-pt-none"> Broj netocnih odgovora: {{ brojNetocnih }}  </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj tocnih odgovora: {{ brojTocnih }}
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj netocnih odgovora: {{ brojNetocnih }}
+          </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
           </q-card-actions>
@@ -113,11 +117,12 @@
 
 <script>
 import { ref } from "vue";
+import axios from "axios";
 
 // varijabla u koju se sprema naziv biljke iz random generiranog pitanja
 var randomGeneratedPlant;
 var tocnostOdgovora = "Netočno";
-var brojTocnih ="2";
+var brojTocnih = "2";
 var brojNetocnih = "1";
 
 export default {
@@ -126,7 +131,8 @@ export default {
       color: ref("cyan"),
       alert: ref(false),
       zavrsniPopup: ref(false),
-      brojTocnih,brojNetocnih,
+      brojTocnih,
+      brojNetocnih,
       tocnostOdgovora,
       if() {
         tocnostOdgovora = "Točno";
@@ -134,26 +140,32 @@ export default {
     };
   },
   methods: {
-    /*   async allPlants() {
-      const plants = await this.$axios.get(
-      `http://localhost:3000/plant_species/`
+    async randomPlant() {
+      const jsonObject = await this.$axios.get(
+        `http://localhost:3000/plant_species/`
       );
-      console.log(plants.data.data[0]);
-      this.plants = plants.data.data;
-      },  */
-    generateQ() {
+      var randomPlant =
+        jsonObject.data.data[
+          Math.floor(Math.random() * jsonObject.data.data.length)
+        ];
+      this.plant = randomPlant;
       var myNode = document.getElementById("pitanje");
       while (myNode.lastChild) {
         myNode.removeChild(myNode.lastChild);
       }
       var i = "Kojoj botaničkoj porodici pripada ";
-      var id = getRandomPlantSpeciesID();
+      // console.log(this.plant.id)
+
       document.getElementById("pitanje").append(i);
-      document.getElementById("pitanje").append(id);
+      document.getElementById("pitanje").append(this.plant.croatian_name);
     },
 
-    getRandomBotanicalPlant() {
+    async getRandomBotanicalPlant() {
       const json = require("./botanical_family.json");
+      const test = await this.$axios.get(
+        `http://localhost:3000/botanical_family_plant_species/${this.plant.id}`
+      );
+      // console.log(test.data)
       //privremena lista
       var botanicList = new Array();
       for (var i = 0; i < 3; i++) {
@@ -209,26 +221,10 @@ export default {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
   },
-  /* data() {
-  //  return {
-   // plants: "",
-     // }
-  }  */
+  data() {
+    return {
+      plant: "",
+    };
+  },
 };
-const pitanje = document.getElementById("pitanje");
-function getRandomPlantSpeciesID() {
-  // Ucitavanje json datoteke
-  const jsonObject = require("./plant_species.json");
-  var jsonLength = jsonObject["data"].length;
-
-  // varijabla u kojoj ce se premiti random id
-  var randomPlantID =
-    jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)];
-
-  // sprema se i u globalnu varijablu za generiranje tocnog odgovora
-  randomGeneratedPlant = randomPlantID.croatian_name;
-
-  // rezultat
-  return [randomPlantID.croatian_name];
-}
 </script>

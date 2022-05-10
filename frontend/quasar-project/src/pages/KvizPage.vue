@@ -51,6 +51,7 @@
 
 
 import { ref } from "vue";
+import axios from 'axios';
 var botanicList = new Array();
 function getRandomBotanicalPlant() {
   const json = require("./botanical_family.json");
@@ -95,25 +96,28 @@ export default {
     };
   },
   
-
   methods: {
-    /*   async allPlants() {
-      const plants = await this.$axios.get(
+      async allPlants() {
+      const plants = await axios.get(
       `http://localhost:3000/plant_species/`
       );
-      console.log(plants.data.data[0]);
-      this.plants = plants.data.data;
-      },  */
-    generateQ() {
-      var myNode = document.getElementById("pitanje");
-      while (myNode.lastChild) {
+    const jsonObject= plants.data.data;
+    var jsonLength=jsonObject.length;
+    var randomPlantID = jsonObject[Math.floor(Math.random() * (jsonLength))];
+    var naziv=randomPlantID.croatian_name;
+        return (naziv);
+      },
+    generateQ(){
+       var myNode=document.getElementById("pitanje");
+        while (myNode.lastChild) {
         myNode.removeChild(myNode.lastChild);
       }
-      var i = "Kojoj botaničkoj porodici pripada ";
-      var id = getRandomPlantSpeciesID();
-      document.getElementById("pitanje").append(i);
-      document.getElementById("pitanje").append(id);
-    },
+        var i="Kojoj botaničkoj porodici pripada ";
+      
+       Promise.resolve(this.allPlants()).then(value=> {
+        document.getElementById("pitanje").append(value);});
+        document.getElementById("pitanje").append(i);
+      },  
     
     prikaziGumb() {
       console.log("test");
@@ -136,23 +140,11 @@ export default {
       };
     }
   },
-  /* data() {
-  //  return {
-   // plants: "",
-     // }
-  }  */
+   data() {
+   return {
+    plants: "",
+      }
+  }  
 };
-const pitanje = document.getElementById("pitanje");
-function getRandomPlantSpeciesID() {
-  // Ucitavanje json datoteke
-  const jsonObject = require("./plant_species.json");
-  var jsonLength = jsonObject["data"].length;
 
-  // varijabla u kojoj ce se premiti random id
-  var randomPlantID =
-    jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)];
-
-  // rezultat
-  return [randomPlantID.croatian_name];
-}
 </script>

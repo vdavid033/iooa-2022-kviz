@@ -44,18 +44,38 @@
      <button id="PrihvatiOdgovor" @click="prikaziGumb">Prihvati odgovor</button>
     <button id="PrihvatiIZavrsi" disabled>Prihvati i zavrsi</button>
     </div>
+
+<div>
+  <q-dialog v-model="zavrsniPopup">
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">Rezultat</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            Broj tocnih odgovora: {{ brojTocnih }}
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj netocnih odgovora: {{ brojNetocnih }}
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+</div>
+
   </div>
 </template>
 
 <script>
-
-
 import { ref } from "vue";
 import axios from 'axios';
 var botanicList = new Array();
+var brojTocnih = "2";
+var brojNetocnih = "1";
 function getRandomBotanicalPlant() {
   const json = require("./botanical_family.json");
-
   for (var i = 0; i < 4; i++) {
     var botanicObject = {};
     var index = Math.round(Math.random() * (json["data"].length - 1));
@@ -64,21 +84,19 @@ function getRandomBotanicalPlant() {
     botanicObject["latin_name"] = json["data"][index].latin_name;
     botanicList.push(botanicObject);
   }
-
   // console.log(botanicList);
   // return botanicList;
 }
-
 getRandomBotanicalPlant();
-
-
 export default {
   setup() {
     return {
       confirm: ref(false),
       selection: ref(false),
+      zavrsniPopup: ref(false),
+      brojTocnih,
+      brojNetocnih,
       group: ref("op1"),
-
       options: [
         {
           label: botanicList[1].croatian_name,
@@ -125,7 +143,6 @@ export default {
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
       let count = 0;
-
       function buttonPressed(e) {
         count++;
         if (count === 9) {
@@ -146,5 +163,4 @@ export default {
       }
   }  
 };
-
 </script>

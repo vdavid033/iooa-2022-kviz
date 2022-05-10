@@ -34,24 +34,16 @@
         color="primary"
       />
     </div>
-    <div class="q-pa-md q-gutter-sm">
-      <!-- <q-btn
-        color="white"
-        text-color="black"
-        label="Prihvati odgovor"
-        @click="confirm = true"
-      /> -->
-     <button id="PrihvatiOdgovor" @click="prikaziGumb">Prihvati odgovor</button>
-    <button id="PrihvatiIZavrsi" disabled>Prihvati i zavrsi</button>
-    </div>
 
-<div>
+<div class="q-pa-md q-gutter-sm">
+  <button id="PrihvatiOdgovor" color="white" text-color="black" @click="prikaziGumb">Prihvati odgovor</button>
+  <button id="PrihvatiIZavrsi" color="white" text-color="black" @click="zavrsniPopup=true" hidden>Prihvati i zavrsi</button>
+  <button id="Refresh" color="white" text-color="black" hidden>Refresh</button>
   <q-dialog v-model="zavrsniPopup">
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
           </q-card-section>
-
           <q-card-section class="q-pt-none">
             Broj tocnih odgovora: {{ brojTocnih }}
           </q-card-section>
@@ -142,19 +134,19 @@ export default {
       "use strict";
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
+      let button3=document.getElementById("Refresh");
       let count = 0;
       function buttonPressed(e) {
         count++;
         if (count === 9) {
-          button2.removeAttribute("disabled", false);
+          button2.removeAttribute("hidden", false);
+          button3.removeAttribute("hidden", false);
           button2.innerHTML = "Prihvati i zavrsi";
-          button1.setAttribute("disabled", true);
+          button1.setAttribute("hidden", true);
         }
       }
       button1.addEventListener("click", buttonPressed, true);
-      button2.onclick = () => {
-        window.location.reload();
-      };
+      button3.onclick = ()=>{window.location.reload();}
     }
   },
    data() {

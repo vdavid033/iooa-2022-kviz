@@ -36,7 +36,6 @@
       />
     </div>
 
-<<<<<<< HEAD
     <div class="q-pa-md q-gutter-sm">
       <button
         id="PrihvatiOdgovor"
@@ -59,13 +58,6 @@
         Refresh
       </button>
       <q-dialog v-model="zavrsniPopup">
-=======
-<div class="q-pa-md q-gutter-sm">
-  <button id="PrihvatiOdgovor" color="white" text-color="black" @click="prikaziGumb">Prihvati odgovor</button>
-  <button id="PrihvatiIZavrsi" color="white" text-color="black" @click="zavrsniPopup=true" hidden>Prihvati i zavrsi</button>
-  <button id="Refresh" color="white" text-color="black" hidden>Refresh</button>
-  <q-dialog v-model="zavrsniPopup">
->>>>>>> fd3027b86e93665301c5b4bcd477bb6702b0069b
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
@@ -167,11 +159,7 @@ export default {
       ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
-<<<<<<< HEAD
       let button3 = document.getElementById("Refresh");
-=======
-      let button3=document.getElementById("Refresh");
->>>>>>> fd3027b86e93665301c5b4bcd477bb6702b0069b
       let count = 0;
       function buttonPressed(e) {
         count++;
@@ -183,7 +171,6 @@ export default {
         }
       }
       button1.addEventListener("click", buttonPressed, true);
-<<<<<<< HEAD
       button3.onclick = () => {
         window.location.reload();
       };
@@ -194,14 +181,6 @@ export default {
       function onClick() {
         clicks += 1;
         document.getElementById("clicks").innerHTML = clicks;
-=======
-      button3.onclick = ()=>{window.location.reload();}
-    }
-  },
-   data() {
-   return {
-    plants: "",
->>>>>>> fd3027b86e93665301c5b4bcd477bb6702b0069b
       }
     },
   },

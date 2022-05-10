@@ -1,6 +1,7 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
+      <p>Pitanje: <a id="clicks">0</a></p>
       <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
@@ -34,24 +35,33 @@
         color="primary"
       />
     </div>
+
     <div class="q-pa-md q-gutter-sm">
-      <!-- <q-btn
+      <button
+        id="PrihvatiOdgovor"
         color="white"
         text-color="black"
-        label="Prihvati odgovor"
-        @click="confirm = true"
-      /> -->
-     <button id="PrihvatiOdgovor" @click="prikaziGumb">Prihvati odgovor</button>
-    <button id="PrihvatiIZavrsi" disabled>Prihvati i zavrsi</button>
-    </div>
-
-<div>
-  <q-dialog v-model="zavrsniPopup">
+        @click="prikaziGumb(), generateQ(), brPitanja()"
+      >
+        Prihvati odgovor
+      </button>
+      <button
+        id="PrihvatiIZavrsi"
+        color="white"
+        text-color="black"
+        @click="zavrsniPopup = true"
+        hidden
+      >
+        Prihvati i zavrsi
+      </button>
+      <button id="Refresh" color="white" text-color="black" hidden>
+        Refresh
+      </button>
+      <q-dialog v-model="zavrsniPopup">
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
           </q-card-section>
-
           <q-card-section class="q-pt-none">
             Broj tocnih odgovora: {{ brojTocnih }}
           </q-card-section>
@@ -63,17 +73,18 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
-</div>
-
+    </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import axios from 'axios';
+import axios from "axios";
 var botanicList = new Array();
 var brojTocnih = "2";
 var brojNetocnih = "1";
+var clicks = 0;
+
 function getRandomBotanicalPlant() {
   const json = require("./botanical_family.json");
   for (var i = 0; i < 4; i++) {
@@ -96,6 +107,7 @@ export default {
       zavrsniPopup: ref(false),
       brojTocnih,
       brojNetocnih,
+      index: 0,
       group: ref("op1"),
       options: [
         {
@@ -113,54 +125,69 @@ export default {
       ],
     };
   },
-  
+
   methods: {
-      async allPlants() {
-      const plants = await axios.get(
-      `http://localhost:3000/plant_species/`
-      );
-    const jsonObject= plants.data.data;
-    var jsonLength=jsonObject.length;
-    var randomPlantID = jsonObject[Math.floor(Math.random() * (jsonLength))];
-    var naziv=randomPlantID.croatian_name;
-        return (naziv);
-      },
-    generateQ(){
-       var myNode=document.getElementById("pitanje");
-        while (myNode.lastChild) {
+    
+    async allPlants() {
+      const plants = await axios.get(`http://localhost:3000/plant_species/`);
+      const jsonObject = plants.data.data;
+      var jsonLength = jsonObject.length;
+      var randomPlantID = jsonObject[Math.floor(Math.random() * jsonLength)];
+      var naziv = randomPlantID.croatian_name;
+      return naziv;
+    },
+    brPitanja() {
+    clicks += 1;
+    document.getElementById("clicks").innerHTML = clicks;
+    },
+
+    generateQ() {
+      var myNode = document.getElementById("pitanje");
+      while (myNode.lastChild) {
         myNode.removeChild(myNode.lastChild);
       }
-        var i="Kojoj botaničkoj porodici pripada ";
-      
-       Promise.resolve(this.allPlants()).then(value=> {
-        document.getElementById("pitanje").append(value);});
-        document.getElementById("pitanje").append(i);
-      },  
-    
+      var i = "Kojoj botaničkoj porodici pripada ";
+
+      Promise.resolve(this.allPlants()).then((value) => {
+        document.getElementById("pitanje").append(value);
+      });
+      document.getElementById("pitanje").append(i);
+    },
+
     prikaziGumb() {
       console.log("test");
-      "use strict";
+      ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
+      let button3 = document.getElementById("Refresh");
       let count = 0;
       function buttonPressed(e) {
         count++;
         if (count === 9) {
-          button2.removeAttribute("disabled", false);
+          button2.removeAttribute("hidden", false);
+          button3.removeAttribute("hidden", false);
           button2.innerHTML = "Prihvati i zavrsi";
-          button1.setAttribute("disabled", true);
+          button1.setAttribute("hidden", true);
         }
       }
       button1.addEventListener("click", buttonPressed, true);
-      button2.onclick = () => {
+      button3.onclick = () => {
         window.location.reload();
       };
-    }
-  },
-   data() {
-   return {
-    plants: "",
+    },
+
+    brojacGumba() {
+      var clicks = 0;
+      function onClick() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
       }
-  }  
+    },
+  },
+  data() {
+    return {
+      plants: "",
+    };
+  },
 };
 </script>

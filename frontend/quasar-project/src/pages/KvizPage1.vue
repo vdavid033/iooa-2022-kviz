@@ -40,7 +40,7 @@
 
         <q-item tag="label" v-ripple>
           <q-item-section avatar>
-            <q-radio v-model="color" val="teal" color="teal" />
+            <q-radio v-model="color" val="opcijaJedan" color="teal" />
           </q-item-section>
           <q-item-section>
             <q-item-label id="option-0-random"></q-item-label>
@@ -49,7 +49,7 @@
 
         <q-item tag="label" v-ripple>
           <q-item-section avatar>
-            <q-radio v-model="color" val="orange" color="orange" />
+            <q-radio v-model="color" val="opcijaDva" color="orange" />
           </q-item-section>
           <q-item-section>
             <q-item-label id="option-1-random"></q-item-label>
@@ -58,7 +58,7 @@
 
         <q-item tag="label" v-ripple>
           <q-item-section avatar top>
-            <q-radio v-model="color" val="cyan" color="cyan" />
+            <q-radio v-model="color" val="opcijaTri" color="cyan" />
           </q-item-section>
           <q-item-section>
             <q-item-label id="option-2-random"></q-item-label>
@@ -86,7 +86,9 @@
             <div class="text-h6">{{ tocnostOdgovora }}</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Tekst ide tu! </q-card-section>
+          <q-card-section class="q-pt-none">
+            Odabrali ste {{ color }}
+          </q-card-section>
 
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
@@ -100,8 +102,12 @@
             <div class="text-h6">Rezultat</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Broj tocnih odgovora: {{ brojTocnih }}  </q-card-section>
-           <q-card-section class="q-pt-none"> Broj netocnih odgovora: {{ brojNetocnih }}  </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj tocnih odgovora: {{ brojTocnih }}
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj netocnih odgovora: {{ brojNetocnih }}
+          </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
           </q-card-actions>
@@ -117,16 +123,17 @@ import { ref } from "vue";
 // varijabla u koju se sprema naziv biljke iz random generiranog pitanja
 var randomGeneratedPlant;
 var tocnostOdgovora = "Netočno";
-var brojTocnih ="2";
+var brojTocnih = "2";
 var brojNetocnih = "1";
 
 export default {
   setup() {
     return {
-      color: ref("cyan"),
+      color: ref("option-0-random"),
       alert: ref(false),
       zavrsniPopup: ref(false),
-      brojTocnih,brojNetocnih,
+      brojTocnih,
+      brojNetocnih,
       tocnostOdgovora,
       if() {
         tocnostOdgovora = "Točno";

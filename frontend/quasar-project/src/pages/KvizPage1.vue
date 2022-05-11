@@ -14,7 +14,7 @@
         label="Sljedece"
         @click="
           getRandomBotanicalPlant();
-          randomPlant();
+          generateQ();
         "
       />
     </div>
@@ -71,7 +71,7 @@
         color="white"
         text-color="black"
         label="Prihvati odgovor"
-        @click="alert = true"
+        @click="alert = true; getCorrectAnswerFromBotanicalFamily()"
       />
       <q-btn
         color="white"
@@ -100,12 +100,8 @@
             <div class="text-h6">Rezultat</div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            Broj tocnih odgovora: {{ brojTocnih }}
-          </q-card-section>
-          <q-card-section class="q-pt-none">
-            Broj netocnih odgovora: {{ brojNetocnih }}
-          </q-card-section>
+          <q-card-section class="q-pt-none"> Broj tocnih odgovora: {{ brojTocnih }}  </q-card-section>
+           <q-card-section class="q-pt-none"> Broj netocnih odgovora: {{ brojNetocnih }}  </q-card-section>
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
           </q-card-actions>
@@ -117,12 +113,11 @@
 
 <script>
 import { ref } from "vue";
-import axios from "axios";
 
 // varijabla u koju se sprema naziv biljke iz random generiranog pitanja
 var randomGeneratedPlant;
 var tocnostOdgovora = "Netočno";
-var brojTocnih = "2";
+var brojTocnih ="2";
 var brojNetocnih = "1";
 
 export default {
@@ -131,8 +126,7 @@ export default {
       color: ref("cyan"),
       alert: ref(false),
       zavrsniPopup: ref(false),
-      brojTocnih,
-      brojNetocnih,
+      brojTocnih,brojNetocnih,
       tocnostOdgovora,
       if() {
         tocnostOdgovora = "Točno";
@@ -140,32 +134,31 @@ export default {
     };
   },
   methods: {
-    async randomPlant() {
-      const jsonObject = await this.$axios.get(
-        `http://localhost:3000/plant_species/`
+    /*   async allPlants() {
+      const plants = await this.$axios.get(
+      `http://localhost:3000/plant_species/`
       );
-      var randomPlant =
-        jsonObject.data.data[
-          Math.floor(Math.random() * jsonObject.data.data.length)
-        ];
-      this.plant = randomPlant;
+      console.log(plants.data.data[0]);
+      this.plants = plants.data.data;
+      },  */
+    async generateQ() {
       var myNode = document.getElementById("pitanje");
       while (myNode.lastChild) {
         myNode.removeChild(myNode.lastChild);
       }
       var i = "Kojoj botaničkoj porodici pripada ";
-      // console.log(this.plant.id)
-
+      var id = getRandomPlantSpeciesID()
       document.getElementById("pitanje").append(i);
-      document.getElementById("pitanje").append(this.plant.croatian_name);
-    },
-
-    async getRandomBotanicalPlant() {
-      const json = require("./botanical_family.json");
-      const test = await this.$axios.get(
-        `http://localhost:3000/botanical_family_plant_species/${this.plant.id}`
+      document.getElementById("pitanje").append(id);
+      const plants = await this.$axios.get(
+      `http://localhost:3000/botanical_family_plant_species/${id}`
       );
-      // console.log(test.data)
+      console.log(plants.data);
+      this.plants = plants.data.data;
+   },
+
+    getRandomBotanicalPlant() {
+      const json = require("./botanical_family.json");
       //privremena lista
       var botanicList = new Array();
       for (var i = 0; i < 3; i++) {
@@ -207,10 +200,17 @@ export default {
       }
     },
 
-    getCorrectAnswerFromBotanicalFamily() {
-      // TODO uzeti varijablu randomGeneratedPlant i potražiti njenu botanicku vrstu
-      // i ispisati je u jednu labelu od nasumucnog radio botuna
-    },
+    // async getCorrectAnswerFromBotanicalFamily() {
+    //   // TODO uzeti varijablu randomGeneratedPlant i potražiti njenu botanicku vrstu
+    //   // i ispisati je u jednu labelu od nasumucnog radio botuna
+      
+    //   const plants = await this.$axios.get(
+    //   `http://localhost:3000/botanical_family_plant_species/${id}`
+    //   );
+    //   console.log(plants.data);
+    //   this.plants = plants.data.data;
+    //   }, 
+    
 
     // helper funkcije
     reloadPage() {
@@ -222,9 +222,25 @@ export default {
     },
   },
   data() {
-    return {
-      plant: "",
-    };
-  },
+   return {
+   plants: ""
+     }
+  } 
 };
+const pitanje = document.getElementById("pitanje");
+function getRandomPlantSpeciesID() {
+  // Ucitavanje json datoteke
+  const jsonObject = require("./plant_species.json");
+  var jsonLength = jsonObject["data"].length;
+
+  // varijabla u kojoj ce se premiti random id
+  var randomPlantID =
+    jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)];
+
+  // sprema se i u globalnu varijablu za generiranje tocnog odgovora
+  const randomGeneratedPlant = randomPlantID;
+
+  // rezultat
+  return [randomGeneratedPlant.croatian_name];
+}
 </script>

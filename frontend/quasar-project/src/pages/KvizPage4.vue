@@ -61,13 +61,17 @@
             <div class="text-h6">
               {{
                 state.odabraniOdgovor === state.tocanOdgovor.id
-                  ? "Tocan odgovor"
-                  : "Netocan odgovor"
+                  ? "Točno!"
+                  : "Netočno!"
               }}
             </div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> Tekst ide tu! </q-card-section>
+          <q-card-section class="q-pt-none"> {{
+                state.odabraniOdgovor === state.tocanOdgovor.id
+                  ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
+                  : "Točan odgovor je " + state.tocanOdgovor.croatian_name
+              }} </q-card-section>
 
           <q-card-actions align="right">
             <q-btn flat label="OK" color="primary" v-close-popup></q-btn>

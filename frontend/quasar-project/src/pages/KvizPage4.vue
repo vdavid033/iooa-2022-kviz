@@ -1,7 +1,7 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-      <q-btn color="white" text-color="black" label="Prethodno" />
+      <!-- <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
         <q-btn color="secondary" glossy label="2" />
@@ -16,13 +16,13 @@
           getRandomBotanicalPlant();
           randomPlant();
         "
-      />
+      /> -->
     </div>
     <div class="q-pa-md">
       <div class="q-col-gutter-md row items-start">
         <div id class="col-4 full-width">
           <div id="pitanje">{{ state.pitanje }}</div>
-          <q-img
+          <q-img width="500px" height="300px"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
             :ratio="16 / 9"
           />

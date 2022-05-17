@@ -1,6 +1,7 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
+      <p>Pitanje: <a id="clicks">1</a></p>
       <!-- <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
@@ -22,7 +23,9 @@
       <div class="q-col-gutter-md row items-start">
         <div id class="col-4 full-width">
           <div id="pitanje">{{ state.pitanje }}</div>
-          <q-img width="500px" height="300px"
+          <q-img
+            width="500px"
+            height="300px"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
             :ratio="16 / 9"
           />
@@ -43,18 +46,31 @@
     </div>
     <div class="q-pa-md q-gutter-sm">
       <q-btn
+        id="PrihvatiOdgovor"
         color="white"
         text-color="black"
         label="Prihvati odgovor"
-        @click="state.alert = true"
+        @click="
+        prikaziGumb();
+        brPitanja();
+        state.alert = true;
+        "
       />
       <q-btn
+        id="PrihvatiIZavrsi"
         color="white"
         text-color="black"
         label="Završi i predaj"
         @click="state.zavrsniPopup = true"
+        disabled
       />
-
+<q-btn
+        id="Refresh"
+        color="white"
+        text-color="black"
+        label="Ponovno pokreni kviz"
+        disabled
+      />
       <q-dialog v-model="state.alert">
         <q-card>
           <q-card-section>
@@ -67,19 +83,25 @@
             </div>
           </q-card-section>
 
-          <q-card-section class="q-pt-none"> {{
-                state.odabraniOdgovor === state.tocanOdgovor.id
-                  ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
-                  : "Točan odgovor je " + state.tocanOdgovor.croatian_name
-              }} </q-card-section>
+          <q-card-section class="q-pt-none">
+            {{
+              state.odabraniOdgovor === state.tocanOdgovor.id
+                ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
+                : "Točan odgovor je " + state.tocanOdgovor.croatian_name
+            }}
+          </q-card-section>
 
           <q-card-actions align="right">
             <q-btn
-             flat label="OK"
-             color="primary"
-             @click="getRandomBotanicalPlant(); randomPlant();" 
-             v-close-popup
-             />
+              flat
+              label="OK"
+              color="primary"
+              @click="
+                getRandomBotanicalPlant();
+                randomPlant();
+              "
+              v-close-popup
+            />
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -108,7 +130,7 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
-
+var clicks = 1;
 export default {
   setup() {
     const state = reactive({
@@ -199,6 +221,36 @@ export default {
       getRandomBotanicalPlant,
       getCorrectAnswerFromBotanicalFamily,
     };
+  },
+  methods: {
+
+prikaziGumb() {
+      console.log("test");
+      ("use strict");
+      let button1 = document.getElementById("PrihvatiOdgovor");
+      let button2 = document.getElementById("PrihvatiIZavrsi");
+      let button3 = document.getElementById("Refresh");
+      let count = 0;
+      function buttonPressed(e) {
+        count++;
+        if (count === 9) {
+          button2.removeAttribute("disabled", false);
+          button3.removeAttribute("disabled", false);
+          button2.innerHTML = "Prihvati i zavrsi";
+          button1.setAttribute("disabled", true);
+        }
+      }
+      button1.addEventListener("click", buttonPressed, true);
+      button3.onclick = () => {
+        window.location.reload();
+      };
+    },
+
+    brPitanja() {
+      clicks += 1;
+      document.getElementById("clicks").innerHTML = clicks;
+    },
+    
   },
 };
 </script>

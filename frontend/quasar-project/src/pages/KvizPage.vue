@@ -1,7 +1,7 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-      <p>Pitanje: <a id="clicks">0</a></p>
+      
       <!-- <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
@@ -16,17 +16,32 @@
         @click="generateQ"
       /> -->
     </div>
-    <div class="q-pa-md">
+    <div class="q-pa-md q-gutter-sm">
+    <q-banner inline-actions rounded class="bg-green text-white">
+      <div id class="text-h5 h5 full-width">
+          <span><a id="clicks">0</a>. </span> <span id="pitanje">
+          </span>
+          </div>
+    </q-banner>
+          <q-img width="700px" height="400px"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
+            :ratio="16 / 9"
+          />
+
+      
+  </div>
+   <!-- <div class="q-pa-md">
       <div class="q-col-gutter-md row items-start">
         <div id class="col-4 full-width">
-          <div id="pitanje"></div>
+          <p> <a id="clicks">0</a> </p> <div id="pitanje">
+          </div>
           <q-img width="500px" height="300px"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
             :ratio="16 / 9"
           />
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="q-pa-lg">
       <q-option-group
         id="grupa"

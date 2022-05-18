@@ -1,39 +1,18 @@
 <template>
   <div class="relative fixed-center">
-    <p>Pitanje: <a id="clicks">1</a></p>
     <div class="q-pa-md q-gutter-sm">
-      <!-- <q-btn color="white" text-color="black" label="Prethodno" />
-      <q-btn-group>
-        <q-btn color="secondary" glossy label="1" />
-        <q-btn color="secondary" glossy label="2" />
-        <q-btn color="secondary" glossy label="3" />
-        <q-btn color="secondary" glossy label="4" />
-      </q-btn-group>
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Sljedece"
-        @click="
-          getRandomBotanicalPlant();
-          randomPlant();
-        "
-      /> -->
-    </div>
-    <div class="q-pa-md">
-      <div class="q-col-gutter-md row items-start">
-        <div id class="col-4 full-width">
-          <div id="pitanje">{{ state.pitanje }}</div>
-          <q-img
-            width="500px"
-            height="300px"
+    <q-banner inline-actions rounded class="bg-green text-white">
+      <div id class="text-h5 h5 full-width">
+          <span><a id="clicks">1</a>. </span> <span id="pitanje"> {{ state.pitanje }} </span>
+          </div>
+    </q-banner>
+          <q-img width="700px" height="400px"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
             :ratio="16 / 9"
           />
-        </div>
-      </div>
-    </div>
-    <!--Radio buttons-->
-    <!-- Prolazi kroz listu odgovora i za svaki dodaje radio button -->
+  </div>
+    <!-- Radio buttons
+    Prolazi kroz listu odgovora i za svaki dodaje radio button -->
     <div class="q-pa-md odgovori">
       <q-radio
         v-for="odgovor in state.odgovori"
@@ -131,7 +110,7 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
-var clicks = 1;
+var clicks = 0;
 export default {
   setup() {
     const state = reactive({

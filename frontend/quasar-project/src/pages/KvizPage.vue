@@ -1,7 +1,8 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-      <q-btn color="white" text-color="black" label="Prethodno" />
+      <p>Pitanje: <a id="clicks">0</a></p>
+      <!-- <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
         <q-btn color="secondary" glossy label="2" />
@@ -13,13 +14,13 @@
         text-color="black"
         label="Sljedece"
         @click="generateQ"
-      />
+      /> -->
     </div>
     <div class="q-pa-md">
       <div class="q-col-gutter-md row items-start">
         <div id class="col-4 full-width">
           <div id="pitanje"></div>
-          <q-img
+          <q-img width="500px" height="300px"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
             :ratio="16 / 9"
           />
@@ -34,27 +35,58 @@
         color="primary"
       />
     </div>
+
     <div class="q-pa-md q-gutter-sm">
-      <!-- <q-btn
+      <button
+        id="PrihvatiOdgovor"
         color="white"
         text-color="black"
-        label="Prihvati odgovor"
-        @click="confirm = true"
-      /> -->
-     <button id="PrihvatiOdgovor" @click="prikaziGumb">Prihvati odgovor</button>
-    <button id="PrihvatiIZavrsi" disabled>Prihvati i zavrsi</button>
+        @click="prikaziGumb(), generateQ(), brPitanja()"
+      >
+        Prihvati odgovor
+      </button>
+      <button
+        id="PrihvatiIZavrsi"
+        color="white"
+        text-color="black"
+        @click="zavrsniPopup = true"
+        hidden
+      >
+        Prihvati i zavrsi
+      </button>
+      <button id="Refresh" color="white" text-color="black" hidden>
+        Refresh
+      </button>
+      <q-dialog v-model="zavrsniPopup">
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">Rezultat</div>
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj tocnih odgovora: {{ brojTocnih }}
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            Broj netocnih odgovora: {{ brojNetocnih }}
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="OK" color="primary" v-close-popup></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </div>
 </template>
 
 <script>
-
-
 import { ref } from "vue";
+import axios from "axios";
 var botanicList = new Array();
+var brojTocnih = "2";
+var brojNetocnih = "1";
+var clicks = 0;
+
 function getRandomBotanicalPlant() {
   const json = require("./botanical_family.json");
-
   for (var i = 0; i < 4; i++) {
     var botanicObject = {};
     var index = Math.round(Math.random() * (json["data"].length - 1));
@@ -63,21 +95,20 @@ function getRandomBotanicalPlant() {
     botanicObject["latin_name"] = json["data"][index].latin_name;
     botanicList.push(botanicObject);
   }
-
   // console.log(botanicList);
   // return botanicList;
 }
-
 getRandomBotanicalPlant();
-
-
 export default {
   setup() {
     return {
       confirm: ref(false),
       selection: ref(false),
+      zavrsniPopup: ref(false),
+      brojTocnih,
+      brojNetocnih,
+      index: 0,
       group: ref("op1"),
-
       options: [
         {
           label: botanicList[1].croatian_name,
@@ -94,65 +125,69 @@ export default {
       ],
     };
   },
-  
 
   methods: {
-    /*   async allPlants() {
-      const plants = await this.$axios.get(
-      `http://localhost:3000/plant_species/`
-      );
-      console.log(plants.data.data[0]);
-      this.plants = plants.data.data;
-      },  */
+    
+    async allPlants() {
+      const plants = await axios.get(`http://localhost:3000/plant_species/`);
+      const jsonObject = plants.data.data;
+      var jsonLength = jsonObject.length;
+      var randomPlantID = jsonObject[Math.floor(Math.random() * jsonLength)];
+      var naziv = randomPlantID.croatian_name;
+      return naziv;
+    },
+    brPitanja() {
+    clicks += 1;
+    document.getElementById("clicks").innerHTML = clicks;
+    },
+
     generateQ() {
       var myNode = document.getElementById("pitanje");
       while (myNode.lastChild) {
         myNode.removeChild(myNode.lastChild);
       }
       var i = "Kojoj botaničkoj porodici pripada ";
-      var id = getRandomPlantSpeciesID();
+
+      Promise.resolve(this.allPlants()).then((value) => {
+        document.getElementById("pitanje").append(value);
+      });
       document.getElementById("pitanje").append(i);
-      document.getElementById("pitanje").append(id);
     },
-    
+
     prikaziGumb() {
       console.log("test");
-      "use strict";
+      ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
+      let button3 = document.getElementById("Refresh");
       let count = 0;
-
       function buttonPressed(e) {
         count++;
         if (count === 9) {
-          button2.removeAttribute("disabled", false);
+          button2.removeAttribute("hidden", false);
+          button3.removeAttribute("hidden", false);
           button2.innerHTML = "Prihvati i zavrsi";
-          button1.setAttribute("disabled", true);
+          button1.setAttribute("hidden", true);
         }
       }
       button1.addEventListener("click", buttonPressed, true);
-      button2.onclick = () => {
+      button3.onclick = () => {
         window.location.reload();
       };
-    }
+    },
+
+    brojacGumba() {
+      var clicks = 0;
+      function onClick() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+      }
+    },
   },
-  /* data() {
-  //  return {
-   // plants: "",
-     // }
-  }  */
+  data() {
+    return {
+      plants: "",
+    };
+  },
 };
-const pitanje = document.getElementById("pitanje");
-function getRandomPlantSpeciesID() {
-  // Ucitavanje json datoteke
-  const jsonObject = require("./plant_species.json");
-  var jsonLength = jsonObject["data"].length;
-
-  // varijabla u kojoj ce se premiti random id
-  var randomPlantID =
-    jsonObject["data"][Math.floor(Math.random() * jsonObject["data"].length)];
-
-  // rezultat
-  return [randomPlantID.croatian_name];
-}
 </script>

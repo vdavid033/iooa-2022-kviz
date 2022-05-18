@@ -1,7 +1,7 @@
 <template>
   <div class="relative fixed-center">
+    <p>Pitanje: <a id="clicks">1</a></p>
     <div class="q-pa-md q-gutter-sm">
-      <p>Pitanje: <a id="clicks">1</a></p>
       <!-- <q-btn color="white" text-color="black" label="Prethodno" />
       <q-btn-group>
         <q-btn color="secondary" glossy label="1" />
@@ -53,6 +53,8 @@
         @click="
         prikaziGumb();
         brPitanja();
+        getRandomBotanicalPlant();
+        randomPlant();
         state.alert = true;
         "
       />
@@ -86,8 +88,8 @@
           <q-card-section class="q-pt-none">
             {{
               state.odabraniOdgovor === state.tocanOdgovor.id
-                ? state.plant.croatian_name + " pripada botaničkoj porodici " + state.tocanOdgovor.croatian_name
-                : state.plant.croatian_name + " pripada botaničkoj porodici " + state.tocanOdgovor.croatian_name
+                ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
+                : "Točan odgovor je " + state.tocanOdgovor.croatian_name
             }}
           </q-card-section>
 
@@ -97,8 +99,7 @@
               label="OK"
               color="primary"
               @click="
-                getRandomBotanicalPlant();
-                randomPlant();
+                close
               "
               v-close-popup
             />
@@ -250,7 +251,6 @@ prikaziGumb() {
       clicks += 1;
       document.getElementById("clicks").innerHTML = clicks;
     },
-    
   },
 };
 </script>

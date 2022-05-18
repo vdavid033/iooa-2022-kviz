@@ -1,16 +1,19 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-    <q-banner inline-actions rounded class="bg-green text-white">
-      <div id class="text-h5 h5 full-width">
-          <span><a id="clicks">1</a>. </span> <span id="pitanje"> {{ state.pitanje }} </span>
-          </div>
-    </q-banner>
-          <q-img width="700px" height="400px"
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
-            :ratio="16 / 9"
-          />
-  </div>
+      <q-banner inline-actions rounded class="bg-green text-white">
+        <div id class="text-h5 h5 full-width">
+          <span><a id="clicks">1</a>. </span>
+          <span id="pitanje"> {{ state.pitanje }} </span>
+        </div>
+      </q-banner>
+      <q-img
+        width="700px"
+        height="400px"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
+        :ratio="16 / 9"
+      />
+    </div>
     <!-- Radio buttons
     Prolazi kroz listu odgovora i za svaki dodaje radio button -->
     <div class="q-pa-md odgovori">
@@ -31,11 +34,7 @@
         label="Prihvati odgovor"
         @click="
         prikaziGumb();
-        brPitanja();
-        getRandomBotanicalPlant();
-        randomPlant();
-        state.alert = true;
-        "
+        state.alert = true"
       />
       <q-btn
         id="PrihvatiIZavrsi"
@@ -45,14 +44,14 @@
         @click="state.zavrsniPopup = true"
         disabled
       />
-<q-btn
+      <q-btn
         id="Refresh"
         color="white"
         text-color="black"
         label="Ponovno pokreni kviz"
         disabled
       />
-      <q-dialog v-model="state.alert">
+      <q-dialog v-model="state.alert" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">
@@ -78,15 +77,15 @@
               label="OK"
               color="primary"
               @click="
-                close
+                handleClose();
+                brPitanja();
               "
               v-close-popup
             />
           </q-card-actions>
         </q-card>
       </q-dialog>
-
-      <q-dialog v-model="state.zavrsniPopup">
+      <q-dialog v-model="state.zavrsniPopup" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
@@ -110,7 +109,7 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
-var clicks = 0;
+var clicks = 1;
 export default {
   setup() {
     const state = reactive({
@@ -129,6 +128,10 @@ export default {
       await randomPlant();
       await getRandomBotanicalPlant();
     });
+
+    async function handleClose(){
+      await randomPlant()
+    }
 
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant
     async function randomPlant() {
@@ -200,11 +203,11 @@ export default {
       randomPlant,
       getRandomBotanicalPlant,
       getCorrectAnswerFromBotanicalFamily,
+      handleClose,
     };
   },
   methods: {
-
-prikaziGumb() {
+    prikaziGumb() {
       console.log("test");
       ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");

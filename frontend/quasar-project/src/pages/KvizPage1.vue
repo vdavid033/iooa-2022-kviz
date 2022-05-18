@@ -162,9 +162,10 @@ export default {
 
     async getRandomBotanicalPlant() {
       const json = require("./botanical_family.json");
-      const test = await this.$axios.get(
-        `http://localhost:3000/botanical_family_plant_species/${this.plant.id}`
-      );
+      // console.log(this.plant.id)
+      // const test = await this.$axios.get(
+      //   `http://localhost:3000/botanical_family_plant_species/${this.plant.id}`
+      // );
       // console.log(test.data)
       //privremena lista
       var botanicList = new Array();

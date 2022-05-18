@@ -32,8 +32,6 @@
         @click="
         prikaziGumb();
         brPitanja();
-        getRandomBotanicalPlant();
-        randomPlant();
         state.alert = true;
         "
       />
@@ -52,7 +50,7 @@
         label="Ponovno pokreni kviz"
         disabled
       />
-      <q-dialog v-model="state.alert">
+      <q-dialog v-model="state.alert" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">
@@ -78,7 +76,7 @@
               label="OK"
               color="primary"
               @click="
-                close
+                handleClose()
               "
               v-close-popup
             />
@@ -127,8 +125,11 @@ export default {
 
     onMounted(async () => {
       await randomPlant();
-      await getRandomBotanicalPlant();
     });
+
+    async function handleClose(){
+      await randomPlant()
+    }
 
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant
     async function randomPlant() {
@@ -146,6 +147,7 @@ export default {
       // u state.pitanje spremamo tekst pitanja
       state.pitanje =
         "Kojoj botaničkoj porodici pripada " + state.plant.croatian_name;
+    await getRandomBotanicalPlant();
     }
 
     // funkcija koja dohvaca random botanicke vrste i postavlja ih u listu odgovora state.odgovori
@@ -200,6 +202,7 @@ export default {
       randomPlant,
       getRandomBotanicalPlant,
       getCorrectAnswerFromBotanicalFamily,
+      handleClose
     };
   },
   methods: {

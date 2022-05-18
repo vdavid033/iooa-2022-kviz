@@ -130,7 +130,8 @@ export default {
     });
 
     async function handleClose(){
-      await randomPlant()
+      await randomPlant();
+      await getRandomBotanicalPlant()
     }
 
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant

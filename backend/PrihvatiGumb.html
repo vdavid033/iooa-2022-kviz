@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="PrihvatiOdgovor">Prihvati odgovor</button>
+    <button id="PrihvatiIZavrsi" disabled>Prihvati i zavrsi</button>
+    <script>
+        (
+            function Gumb() {
+            "use strict";
+            let button1 = document.getElementById("PrihvatiOdgovor");
+            let button2 = document.getElementById("PrihvatiIZavrsi");
+            let count = 0;
+
+            function buttonPressed(e) {
+                count++;
+                if (count === 10) {
+                    button2.removeAttribute("disabled", false);
+                    button2.innerHTML = "Prihvati i zavrsi";
+                    button1.setAttribute("disabled", true);
+                }
+            }
+            button1.addEventListener("click", buttonPressed, true);
+            button2.onclick = ()=>{window.location.reload();}
+        })();
+    </script>
+</body>
+</html>

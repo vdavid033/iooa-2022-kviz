@@ -86,8 +86,8 @@
           <q-card-section class="q-pt-none">
             {{
               state.odabraniOdgovor === state.tocanOdgovor.id
-                ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
-                : "Točan odgovor je " + state.tocanOdgovor.croatian_name
+                ? state.plant.croatian_name + " pripada botaničkoj porodici " + state.tocanOdgovor.croatian_name
+                : state.plant.croatian_name + " pripada botaničkoj porodici " + state.tocanOdgovor.croatian_name
             }}
           </q-card-section>
 

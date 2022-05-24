@@ -1,39 +1,21 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-      <p>Pitanje: <a id="clicks">1</a></p>
-      <!-- <q-btn color="white" text-color="black" label="Prethodno" />
-      <q-btn-group>
-        <q-btn color="secondary" glossy label="1" />
-        <q-btn color="secondary" glossy label="2" />
-        <q-btn color="secondary" glossy label="3" />
-        <q-btn color="secondary" glossy label="4" />
-      </q-btn-group>
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Sljedece"
-        @click="
-          getRandomBotanicalPlant();
-          randomPlant();
-        "
-      /> -->
-    </div>
-    <div class="q-pa-md">
-      <div class="q-col-gutter-md row items-start">
-        <div id class="col-4 full-width">
-          <div id="pitanje">{{ state.pitanje }}</div>
-          <q-img
-            width="500px"
-            height="300px"
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
-            :ratio="16 / 9"
-          />
+      <q-banner inline-actions rounded class="bg-green text-white">
+        <div id class="text-h5 h5 full-width">
+          <span><a id="clicks">1</a>. </span>
+          <span id="pitanje"> {{ state.pitanje }} </span>
         </div>
-      </div>
+      </q-banner>
+      <q-img
+        width="700px"
+        height="400px"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
+        :ratio="16 / 9"
+      />
     </div>
-    <!--Radio buttons-->
-    <!-- Prolazi kroz listu odgovora i za svaki dodaje radio button -->
+    <!-- Radio buttons
+    Prolazi kroz listu odgovora i za svaki dodaje radio button -->
     <div class="q-pa-md odgovori">
       <q-radio
         v-for="odgovor in state.odgovori"
@@ -52,9 +34,7 @@
         label="Prihvati odgovor"
         @click="
         prikaziGumb();
-        brPitanja();
-        state.alert = true;
-        "
+        state.alert = true"
       />
       <q-btn
         id="PrihvatiIZavrsi"
@@ -64,14 +44,14 @@
         @click="state.zavrsniPopup = true"
         disabled
       />
-<q-btn
+      <q-btn
         id="Refresh"
         color="white"
         text-color="black"
         label="Ponovno pokreni kviz"
         disabled
       />
-      <q-dialog v-model="state.alert">
+      <q-dialog v-model="state.alert" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">
@@ -97,16 +77,15 @@
               label="OK"
               color="primary"
               @click="
-                getRandomBotanicalPlant();
-                randomPlant();
+                handleClose();
+                brPitanja();
               "
               v-close-popup
             />
           </q-card-actions>
         </q-card>
       </q-dialog>
-
-      <q-dialog v-model="state.zavrsniPopup">
+      <q-dialog v-model="state.zavrsniPopup" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
@@ -149,6 +128,11 @@ export default {
       await randomPlant();
       await getRandomBotanicalPlant();
     });
+
+    async function handleClose(){
+      await randomPlant();
+      await getRandomBotanicalPlant()
+    }
 
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant
     async function randomPlant() {
@@ -220,11 +204,11 @@ export default {
       randomPlant,
       getRandomBotanicalPlant,
       getCorrectAnswerFromBotanicalFamily,
+      handleClose,
     };
   },
   methods: {
-
-prikaziGumb() {
+    prikaziGumb() {
       console.log("test");
       ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
@@ -250,7 +234,6 @@ prikaziGumb() {
       clicks += 1;
       document.getElementById("clicks").innerHTML = clicks;
     },
-    
   },
 };
 </script>

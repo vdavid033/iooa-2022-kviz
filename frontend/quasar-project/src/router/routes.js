@@ -9,6 +9,7 @@ const routes = [
       { path: "kviz2", component: () => import("pages/KvizPage2.vue") },
       { path: "kviz3", component: () => import("pages/KvizPage3.vue") },
       { path: "kviz4", component: () => import("pages/KvizPage4.vue") },
+      { path: "kviz5", component: () => import("pages/KvizPage5.vue") },
     ],
   },
 

@@ -33,8 +33,9 @@
         text-color="black"
         label="Prihvati odgovor"
         @click="
-        prikaziGumb();
-        state.alert = true"
+          prikaziGumb();
+          state.alert = true;
+        "
       />
       <q-btn
         id="PrihvatiIZavrsi"
@@ -64,10 +65,15 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
+            <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
             {{
               state.odabraniOdgovor === state.tocanOdgovor.id
-                ? state.tocanOdgovor.croatian_name + " je točan odgovor!"
-                : "Točan odgovor je " + state.tocanOdgovor.croatian_name
+                ? state.plant.croatian_name +
+                  " pripada u botaničku porodicu " +
+                  state.tocanOdgovor.croatian_name
+                : state.plant.croatian_name +
+                  " pripada u botaničku porodicu " +
+                  state.tocanOdgovor.croatian_name
             }}
           </q-card-section>
 
@@ -129,9 +135,9 @@ export default {
       await getRandomBotanicalPlant();
     });
 
-    async function handleClose(){
+    async function handleClose() {
       await randomPlant();
-      await getRandomBotanicalPlant()
+      await getRandomBotanicalPlant();
     }
 
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant
@@ -209,7 +215,6 @@ export default {
   },
   methods: {
     prikaziGumb() {
-      console.log("test");
       ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");

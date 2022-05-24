@@ -35,6 +35,9 @@
         @click="
           prikaziGumb();
           state.alert = true;
+          state.odabraniOdgovor === state.tocanOdgovor.id
+            ? state.brojTocnih = state.brojTocnih + 1
+            : state.brojNetocnih = state.brojNetocnih + 1
         "
       />
       <q-btn

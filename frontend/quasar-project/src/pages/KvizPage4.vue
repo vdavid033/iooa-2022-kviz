@@ -118,7 +118,7 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
-var clicks = 1;
+var clicks = 0;
 export default {
   setup() {
     const state = reactive({
@@ -225,7 +225,7 @@ export default {
       let count = 0;
       function buttonPressed(e) {
         count++;
-        if (count === 9) {
+        if (count === 10) {
           button2.removeAttribute("disabled", false);
           button3.removeAttribute("disabled", false);
           button2.innerHTML = "Prihvati i zavrsi";

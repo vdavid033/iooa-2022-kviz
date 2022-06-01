@@ -1,39 +1,21 @@
 <template>
   <div class="relative fixed-center">
     <div class="q-pa-md q-gutter-sm">
-      <p>Pitanje: <a id="clicks">1</a></p>
-      <!-- <q-btn color="white" text-color="black" label="Prethodno" />
-      <q-btn-group>
-        <q-btn color="secondary" glossy label="1" />
-        <q-btn color="secondary" glossy label="2" />
-        <q-btn color="secondary" glossy label="3" />
-        <q-btn color="secondary" glossy label="4" />
-      </q-btn-group>
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Sljedece"
-        @click="
-          getRandomBotanicalPlant();
-          randomPlant();
-        "
-      /> -->
-    </div>
-    <div class="q-pa-md">
-      <div class="q-col-gutter-md row items-start">
-        <div id class="col-4 full-width">
-          <div id="pitanje">{{ state.pitanje }}</div>
-          <q-img
-            width="500px"
-            height="300px"
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
-            :ratio="16 / 9"
-          />
+      <q-banner inline-actions rounded class="bg-green text-white">
+        <div id class="text-h5 h5 full-width">
+          <span><a id="clicks">1</a>. </span>
+          <span id="pitanje"> {{ state.pitanje }} </span>
         </div>
-      </div>
+      </q-banner>
+      <q-img
+        width="700px"
+        height="400px"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Violet.JPG"
+        :ratio="16 / 9"
+      />
     </div>
-    <!--Radio buttons-->
-    <!-- Prolazi kroz listu odgovora i za svaki dodaje radio button -->
+    <!-- Radio buttons
+    Prolazi kroz listu odgovora i za svaki dodaje radio button -->
     <div class="q-pa-md odgovori">
       <q-radio
         v-for="odgovor in state.odgovori"
@@ -51,9 +33,11 @@
         text-color="black"
         label="Prihvati odgovor"
         @click="
-        prikaziGumb();
-        brPitanja();
-        state.alert = true;
+          prikaziGumb();
+          state.alert = true;
+          state.odabraniOdgovor === state.tocanOdgovor.id
+            ? state.brojTocnih = state.brojTocnih + 1
+            : state.brojNetocnih = state.brojNetocnih + 1
         "
       />
       <q-btn
@@ -64,14 +48,14 @@
         @click="state.zavrsniPopup = true"
         disabled
       />
-<q-btn
+      <q-btn
         id="Refresh"
         color="white"
         text-color="black"
         label="Ponovno pokreni kviz"
         disabled
       />
-      <q-dialog v-model="state.alert">
+      <q-dialog v-model="state.alert" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">
@@ -84,10 +68,15 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
+            <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
             {{
               state.odabraniOdgovor === state.tocanOdgovor.id
-                ? "Latinski naziv za biljnu vrstu" + state.plant.croatian_name + " je " + state.tocanOdgovor.latin_name
-                : "Latinski naziv za biljnu vrstu" + state.plant.croatian_name + " je " + state.tocanOdgovor.latin_name
+                ? state.plant.latin_name +
+                  " je latinski naziv za " +
+                  state.tocanOdgovor.croatian_name
+                : state.plant.latin_name +
+                  " je latinski naziv za " +
+                  state.tocanOdgovor.croatian_name
             }}
           </q-card-section>
 
@@ -97,16 +86,15 @@
               label="OK"
               color="primary"
               @click="
-                getRandomBotanicalPlant();
-                randomPlant();
+                handleClose();
+                brPitanja();
               "
               v-close-popup
             />
           </q-card-actions>
         </q-card>
       </q-dialog>
-
-      <q-dialog v-model="state.zavrsniPopup">
+      <q-dialog v-model="state.zavrsniPopup" persistent>
         <q-card>
           <q-card-section>
             <div class="text-h6">Rezultat</div>
@@ -150,6 +138,11 @@ export default {
       await getRandomBotanicalPlant();
     });
 
+    async function handleClose() {
+      await randomPlant();
+      await getRandomBotanicalPlant();
+    }
+
     // funkcija koja dohvaca random plant species i postavlja vrijednost u state.plant
     async function randomPlant() {
       const jsonObject = await axios.get(
@@ -165,12 +158,12 @@ export default {
 
       // u state.pitanje spremamo tekst pitanja
       state.pitanje =
-        "Koji je latinski naziv za biljnu vrstu " + state.plant.croatian_name;
+        "Koji je latinski naziv za " + state.plant.latin_name;
     }
 
     // funkcija koja dohvaca random botanicke vrste i postavlja ih u listu odgovora state.odgovori
     async function getRandomBotanicalPlant() {
-      const json = await axios.get(`http://localhost:3000/plant_species`);
+      const json = await axios.get(`http://localhost:3000/botanical_family`);
       const botanicalFamily = json.data.data;
 
       // funkcija koja dohvaca tocan odgovor i sprema ga u state.tocanOdgovor
@@ -183,7 +176,6 @@ export default {
         let index = Math.round(Math.random() * (botanicalFamily.length - 1));
         let botanicObject = {
           id: botanicalFamily[index].id,
-          croatian_name: botanicalFamily[index].croatian_name,
           latin_name: botanicalFamily[index].latin_name,
         };
         // dodaje odgovor u listu samo ako takav odgovor vec ne postoji i ako odgovor nije jednak tocnom odgovoru
@@ -220,12 +212,11 @@ export default {
       randomPlant,
       getRandomBotanicalPlant,
       getCorrectAnswerFromBotanicalFamily,
+      handleClose,
     };
   },
   methods: {
-
-prikaziGumb() {
-      console.log(this.state.odabraniOdgovor, this.state.tocanOdgovor.id);
+    prikaziGumb() {
       ("use strict");
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
@@ -250,7 +241,6 @@ prikaziGumb() {
       clicks += 1;
       document.getElementById("clicks").innerHTML = clicks;
     },
-    
   },
 };
 </script>

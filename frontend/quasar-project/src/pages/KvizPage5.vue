@@ -158,7 +158,7 @@ export default {
 
       // u state.pitanje spremamo tekst pitanja
       state.pitanje =
-        "Koji je latinski naziv za " + state.plant.latin_name;
+        "Koji je latinski naziv za " + state.plant.croatian_name;
     }
 
     // funkcija koja dohvaca random botanicke vrste i postavlja ih u listu odgovora state.odgovori

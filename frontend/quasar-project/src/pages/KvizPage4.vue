@@ -118,7 +118,8 @@
 <script>
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
-var clicks = 0;
+var clicks = 1;
+
 export default {
   setup() {
     const state = reactive({
@@ -222,10 +223,16 @@ export default {
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
       let button3 = document.getElementById("Refresh");
-      let count = 0;
+      let count = 1;
+      
       function buttonPressed(e) {
+        if (count >=11)
+        {
+          count = 1;
+        }
         count++;
-        if (count === 10) {
+        console.log("count=" + count)
+        if (count >= 11) {
           button2.removeAttribute("disabled", false);
           button3.removeAttribute("disabled", false);
           button2.innerHTML = "Prihvati i zavrsi";
@@ -239,7 +246,12 @@ export default {
     },
 
     brPitanja() {
+
       clicks += 1;
+      if (clicks === 11)
+      {
+        clicks = 10;
+      }
       document.getElementById("clicks").innerHTML = clicks;
     },
   },

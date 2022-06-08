@@ -5,6 +5,9 @@
         <div id class="text-h5 h5 full-width">
           <span><a id="clicks">1</a>. </span>
           <span id="pitanje"> {{ state.pitanje }} </span>
+          <div>
+            {{ randNumber }}
+          </div>
         </div>
       </q-banner>
       <q-img
@@ -16,16 +19,30 @@
     </div>
     <!-- Radio buttons
     Prolazi kroz listu odgovora i za svaki dodaje radio button -->
-    <div class="q-pa-md odgovori">
-      <q-radio
-        v-for="odgovor in state.odgovori"
-        v-bind:key="odgovor"
-        v-model="state.odabraniOdgovor"
-        :val="odgovor.id"
-        :label="odgovor.croatian_name"
-        color="teal"
-      />
-    </div>
+    <template v-if="randNumber === 1">
+      <div class="q-pa-md odgovori">
+        <q-radio
+          v-for="odgovor in state.odgovori"
+          v-bind:key="odgovor"
+          v-model="state.odabraniOdgovor"
+          :val="odgovor.id"
+          :label="odgovor.croatian_name"
+          color="teal"
+        />
+      </div>
+    </template>
+    <template v-else>
+      <div class="q-pa-md odgovori">
+        <q-radio
+          v-for="odgovor in state.odgovori"
+          v-bind:key="odgovor"
+          v-model="state.odabraniOdgovor"
+          :val="odgovor.id"
+          :label="odgovor.latin_name"
+          color="teal"
+        />
+      </div>
+    </template>
     <div class="q-pa-md q-gutter-sm">
       <q-btn
         id="PrihvatiOdgovor"
@@ -36,8 +53,8 @@
           prikaziGumb();
           state.alert = true;
           state.odabraniOdgovor === state.tocanOdgovor.id
-            ? state.brojTocnih = state.brojTocnih + 1
-            : state.brojNetocnih = state.brojNetocnih + 1
+            ? (state.brojTocnih = state.brojTocnih + 1)
+            : (state.brojNetocnih = state.brojNetocnih + 1);
         "
       />
       <q-btn
@@ -66,19 +83,34 @@
               }}
             </div>
           </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
-            {{
-              state.odabraniOdgovor === state.tocanOdgovor.id
-                ? state.plant.croatian_name +
-                  " pripada u botaničku porodicu " +
-                  state.tocanOdgovor.croatian_name
-                : state.plant.croatian_name +
-                  " pripada u botaničku porodicu " +
-                  state.tocanOdgovor.croatian_name
-            }}
-          </q-card-section>
+          <template v-if="randNumber === 1">
+            <q-card-section class="q-pt-none">
+              <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
+              {{
+                state.odabraniOdgovor === state.tocanOdgovor.id
+                  ? state.plant.croatian_name +
+                    " pripada u botaničku porodicu " +
+                    state.tocanOdgovor.croatian_name
+                  : state.plant.croatian_name +
+                    " pripada u botaničku porodicu " +
+                    state.tocanOdgovor.croatian_name
+              }}
+            </q-card-section>
+          </template>
+          <template v-else>
+            <q-card-section class="q-pt-none">
+              <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
+              {{
+                state.odabraniOdgovor === state.tocanOdgovor.id
+                  ? state.plant.latin_name +
+                    " je latinski naziv za " +
+                    state.tocanOdgovor.croatian_name
+                  : state.plant.latin_name +
+                    " je latinski naziv za " +
+                    state.tocanOdgovor.croatian_name
+              }}
+            </q-card-section>
+          </template>
 
           <q-card-actions align="right">
             <q-btn
@@ -119,8 +151,14 @@
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
 var clicks = 1;
-
+var randNumber = 2;
+console.log(randNumber);
 export default {
+  data() {
+    return {
+      randNumber,
+    };
+  },
   setup() {
     const state = reactive({
       plant: {},
@@ -158,8 +196,13 @@ export default {
       state.plant = randomPlant;
 
       // u state.pitanje spremamo tekst pitanja
-      state.pitanje =
-        "Kojoj botaničkoj porodici pripada " + state.plant.croatian_name;
+      if (randNumber === 1) {
+        state.pitanje =
+          "Kojoj botaničkoj porodici pripada " + state.plant.croatian_name;
+      } else {
+        state.pitanje =
+          "Koji je latinski naziv za " + state.plant.croatian_name;
+      }
     }
 
     // funkcija koja dohvaca random botanicke vrste i postavlja ih u listu odgovora state.odgovori
@@ -203,10 +246,17 @@ export default {
 
     // funkcija dohvaca tocan odgovor za random plant species -> state.plant
     async function getCorrectAnswerFromBotanicalFamily() {
-      const json = await axios.get(
-        `http://localhost:3000/botanical_family_plant_species/${state.plant.id}`
-      );
-      state.tocanOdgovor = json.data.data;
+      if (randNumber === 1) {
+        const json = await axios.get(
+          `http://localhost:3000/botanical_family_plant_species/${state.plant.id}`
+        );
+        state.tocanOdgovor = json.data.data;
+      } else {
+        const json = await axios.get(
+          `http://localhost:3000/plant_species/${state.plant.id}`
+        );
+        state.tocanOdgovor = json.data.data;
+      }
     }
 
     return {
@@ -220,18 +270,19 @@ export default {
   methods: {
     prikaziGumb() {
       ("use strict");
+      randNumber = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+      console.log(randNumber);
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
       let button3 = document.getElementById("Refresh");
       let count = 1;
-      
+
       function buttonPressed(e) {
-        if (count >=11)
-        {
+        if (count >= 11) {
           count = 1;
         }
         count++;
-        console.log("count=" + count)
+        console.log("count=" + count);
         if (count >= 11) {
           button2.removeAttribute("disabled", false);
           button3.removeAttribute("disabled", false);
@@ -246,10 +297,8 @@ export default {
     },
 
     brPitanja() {
-
       clicks += 1;
-      if (clicks === 11)
-      {
+      if (clicks === 11) {
         clicks = 10;
       }
       document.getElementById("clicks").innerHTML = clicks;

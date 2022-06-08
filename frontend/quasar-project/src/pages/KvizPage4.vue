@@ -6,7 +6,7 @@
           <span><a id="clicks">1</a>. </span>
           <span id="pitanje"> {{ state.pitanje }} </span>
           <div>
-            {{ randNumber }}
+            {{ state.randNumber }}
           </div>
         </div>
       </q-banner>
@@ -19,7 +19,7 @@
     </div>
     <!-- Radio buttons
     Prolazi kroz listu odgovora i za svaki dodaje radio button -->
-    <template v-if="randNumber === 1">
+    <template v-if="this.state.randNumber === 1">
       <div class="q-pa-md odgovori">
         <q-radio
           v-for="odgovor in state.odgovori"
@@ -72,18 +72,18 @@
         label="Ponovno pokreni kviz"
         disabled
       />
-      <q-dialog v-model="state.alert" persistent>
-        <q-card>
-          <q-card-section>
-            <div class="text-h6">
-              {{
-                state.odabraniOdgovor === state.tocanOdgovor.id
-                  ? "Točno!"
-                  : "Netočno!"
-              }}
-            </div>
-          </q-card-section>
-          <template v-if="randNumber === 1">
+      <template v-if="this.state.randNumber === 1">
+        <q-dialog v-model="state.alert" persistent>
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">
+                {{
+                  state.odabraniOdgovor === state.tocanOdgovor.id
+                    ? "Točno!"
+                    : "Netočno!"
+                }}
+              </div>
+            </q-card-section>
             <q-card-section class="q-pt-none">
               <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
               {{
@@ -96,8 +96,34 @@
                     state.tocanOdgovor.croatian_name
               }}
             </q-card-section>
-          </template>
-          <template v-else>
+
+            <q-card-actions align="right">
+              <q-btn
+                flat
+                label="OK"
+                color="primary"
+                @click="
+                  handleClose();
+                  brPitanja();
+                "
+                v-close-popup
+              />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
+      </template>
+      <template v-else>
+        <q-dialog v-model="state.alert" persistent>
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">
+                {{
+                  state.odabraniOdgovor === state.tocanOdgovor.id
+                    ? "Točno!"
+                    : "Netočno!"
+                }}
+              </div>
+            </q-card-section>
             <q-card-section class="q-pt-none">
               <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
               {{
@@ -110,22 +136,22 @@
                     state.tocanOdgovor.croatian_name
               }}
             </q-card-section>
-          </template>
 
-          <q-card-actions align="right">
-            <q-btn
-              flat
-              label="OK"
-              color="primary"
-              @click="
-                handleClose();
-                brPitanja();
-              "
-              v-close-popup
-            />
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
+            <q-card-actions align="right">
+              <q-btn
+                flat
+                label="OK"
+                color="primary"
+                @click="
+                  handleClose();
+                  brPitanja();
+                "
+                v-close-popup
+              />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
+      </template>
       <q-dialog v-model="state.zavrsniPopup" persistent>
         <q-card>
           <q-card-section>
@@ -151,14 +177,14 @@
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
 var clicks = 1;
-var randNumber = 2;
-console.log(randNumber);
+// var randNumber = 2;
+// console.log(randNumber);
 export default {
-  data() {
-    return {
-      randNumber,
-    };
-  },
+  // data() {
+  //   return {
+  //     randNumber,
+  //   };
+  // },
   setup() {
     const state = reactive({
       plant: {},
@@ -170,7 +196,9 @@ export default {
       brojNetocnih: 0,
       alert: false,
       zavrsniPopup: false,
+      randNumber: 2,
     });
+    console.log(state.randNumber);
 
     onMounted(async () => {
       await randomPlant();
@@ -196,7 +224,7 @@ export default {
       state.plant = randomPlant;
 
       // u state.pitanje spremamo tekst pitanja
-      if (randNumber === 1) {
+      if (state.randNumber === 1) {
         state.pitanje =
           "Kojoj botaničkoj porodici pripada " + state.plant.croatian_name;
       } else {
@@ -246,7 +274,7 @@ export default {
 
     // funkcija dohvaca tocan odgovor za random plant species -> state.plant
     async function getCorrectAnswerFromBotanicalFamily() {
-      if (randNumber === 1) {
+      if (state.randNumber === 1) {
         const json = await axios.get(
           `http://localhost:3000/botanical_family_plant_species/${state.plant.id}`
         );
@@ -270,8 +298,6 @@ export default {
   methods: {
     prikaziGumb() {
       ("use strict");
-      randNumber = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
-      console.log(randNumber);
       let button1 = document.getElementById("PrihvatiOdgovor");
       let button2 = document.getElementById("PrihvatiIZavrsi");
       let button3 = document.getElementById("Refresh");
@@ -294,6 +320,8 @@ export default {
       button3.onclick = () => {
         window.location.reload();
       };
+      this.state.randNumber = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+      console.log(this.state.randNumber);
     },
 
     brPitanja() {

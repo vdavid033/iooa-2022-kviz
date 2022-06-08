@@ -51,6 +51,7 @@
         label="Prihvati odgovor"
         @click="
           prikaziGumb();
+          //randNumGen();
           state.alert = true;
           state.odabraniOdgovor === state.tocanOdgovor.id
             ? (state.brojTocnih = state.brojTocnih + 1)
@@ -72,18 +73,18 @@
         label="Ponovno pokreni kviz"
         disabled
       />
-      <template v-if="this.state.randNumber === 1">
-        <q-dialog v-model="state.alert" persistent>
-          <q-card>
-            <q-card-section>
-              <div class="text-h6">
-                {{
-                  state.odabraniOdgovor === state.tocanOdgovor.id
-                    ? "Točno!"
-                    : "Netočno!"
-                }}
-              </div>
-            </q-card-section>
+      <q-dialog v-model="state.alert" persistent>
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">
+              {{
+                state.odabraniOdgovor === state.tocanOdgovor.id
+                  ? "Točno!"
+                  : "Netočno!"
+              }}
+            </div>
+          </q-card-section>
+          <template v-if="this.state.randNumber === 1">
             <q-card-section class="q-pt-none">
               <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
               {{
@@ -96,34 +97,8 @@
                     state.tocanOdgovor.croatian_name
               }}
             </q-card-section>
-
-            <q-card-actions align="right">
-              <q-btn
-                flat
-                label="OK"
-                color="primary"
-                @click="
-                  handleClose();
-                  brPitanja();
-                "
-                v-close-popup
-              />
-            </q-card-actions>
-          </q-card>
-        </q-dialog>
-      </template>
-      <template v-else>
-        <q-dialog v-model="state.alert" persistent>
-          <q-card>
-            <q-card-section>
-              <div class="text-h6">
-                {{
-                  state.odabraniOdgovor === state.tocanOdgovor.id
-                    ? "Točno!"
-                    : "Netočno!"
-                }}
-              </div>
-            </q-card-section>
+          </template>
+          <template v-else>
             <q-card-section class="q-pt-none">
               <!-- //biljna vrsta pripada u botaničku porodicu botanička porodica -->
               {{
@@ -136,22 +111,23 @@
                     state.tocanOdgovor.croatian_name
               }}
             </q-card-section>
+          </template>
 
-            <q-card-actions align="right">
-              <q-btn
-                flat
-                label="OK"
-                color="primary"
-                @click="
-                  handleClose();
-                  brPitanja();
-                "
-                v-close-popup
-              />
-            </q-card-actions>
-          </q-card>
-        </q-dialog>
-      </template>
+          <q-card-actions align="right">
+            <q-btn
+              flat
+              label="OK"
+              color="primary"
+              @click="
+                handleClose();
+                brPitanja();
+                randNumGen();
+              "
+              v-close-popup
+            />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
       <q-dialog v-model="state.zavrsniPopup" persistent>
         <q-card>
           <q-card-section>
@@ -320,10 +296,11 @@ export default {
       button3.onclick = () => {
         window.location.reload();
       };
+    },
+    randNumGen() {
       this.state.randNumber = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
       console.log(this.state.randNumber);
     },
-
     brPitanja() {
       clicks += 1;
       if (clicks === 11) {

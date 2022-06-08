@@ -5,9 +5,6 @@
         <div id class="text-h5 h5 full-width">
           <span><a id="clicks">1</a>. </span>
           <span id="pitanje"> {{ state.pitanje }} </span>
-          <div>
-            {{ state.randNumber }}
-          </div>
         </div>
       </q-banner>
       <q-img
@@ -153,14 +150,9 @@
 import { onMounted, reactive } from "vue";
 import { axios } from "../boot/axios";
 var clicks = 1;
-// var randNumber = 2;
-// console.log(randNumber);
+var randNumber = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+
 export default {
-  // data() {
-  //   return {
-  //     randNumber,
-  //   };
-  // },
   setup() {
     const state = reactive({
       plant: {},
@@ -172,7 +164,7 @@ export default {
       brojNetocnih: 0,
       alert: false,
       zavrsniPopup: false,
-      randNumber: 2,
+      randNumber,
     });
     console.log(state.randNumber);
 

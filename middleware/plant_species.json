@@ -1,0 +1,51 @@
+{
+    "error": false,
+    "data": [
+      {
+        "id": 1,
+        "croatian_name": "Vrtna jagoda",
+        "latin_name": "Fragaria × ananassa",
+        "synonym": "Jagoda",
+        "description": "Vrtna jagoda (ili jednostavno jagoda; Fragaria × ananassa) široko je uzgajana hibridna vrsta roda Fragaria, zajednički poznata kao jagoda, koje se u svijetu uzgajaju zbog svog ploda. Plod je nadaleko cijenjen zbog karakteristične arome, jarko crvene boje, sočne teksture i slatkoće. Konzumira se u velikim količinama, bilo svježa ili u tako pripremljenoj hrani kao džem, sok, pite, sladoled, mliječni šejkovi i čokolade. Umjetne arome i arome jagode također se široko koriste u proizvodima poput bombona, sapuna, sjajila za usne, parfema i mnogih drugih. ",
+        "genus_id": 1,
+        "systematist_id": 1
+      },
+      {
+        "id": 2,
+        "croatian_name": "Malina",
+        "latin_name": "Rubus idaeus",
+        "synonym": "",
+        "description": "Malina je višegodišnja samonikla biljka i ima zeljastu stabljiku. Grm naraste i do 250 cm u visinu. Listovi su složeni od 3 do 7 listića i perasto sastavljeni. Plodovi su zbirni, najčešće crvene boje, jako su ukusni za jesti, a beru se posve zreli. Sjemenke su svjetlosmeđe, mrežasto naborane, a najčešće ih raspršuju ptice. Cvjetovi su bijeli.Rasprostranjena je u Europi i sjevernoj Aziji. Raste na rubovima šuma gdje je veća vlažnost zraka. Ima ljekovita svojstva i koristi se za pravljenje mnogih proizvoda. Raste od sredine ljeta do sredine jeseni, a cvate od svibnja do lipnja. Najveći proizvođač malina je Rusija. Prema imenu ovog voća nastalo je hrvatsko žensko ime Malina. ",
+        "genus_id": 2,
+        "systematist_id": 1
+      },
+      {
+        "id": 3,
+        "croatian_name": "Prava lavanda",
+        "latin_name": "Lavandula angustifolia",
+        "synonym": "Lavandula officinalis, Lavandula vera, Lavandula spica var. a(alfa)",
+        "description": "Prava ili ljekovita lavanda, sadrži veliki udio linalil acetata u eteričnom ulju, manji udio linalola i izrazito mali udio kamfora",
+        "genus_id": 3,
+        "systematist_id": 1
+      },
+      {
+        "id": 4,
+        "croatian_name": "Lavandin",
+        "latin_name": "Lavandula hybrida",
+        "synonym": "Lavandula x intermedia, Lavandula x hortensis",
+        "description": "Lavandin je hibridna lavanda. Sadrži do 5 % eteričnih ulja u kojima dominira linalol, linalil acetat je sadržan u manjim količinama, a sadržaj kamfora je znatan, čak i do  preko 15 % kod nekih sorti/kultivara.",
+        "genus_id": 3,
+        "systematist_id": 1
+      },
+      {
+        "id": 5,
+        "croatian_name": "Prava majčina dušica ",
+        "latin_name": "Thymus vulgaris",
+        "synonym": "timijan",
+        "description": "Višegodišnja, polugrmasta začinska biljka.",
+        "genus_id": 4,
+        "systematist_id": 1
+      }
+    ],
+    "message": "plant_species."
+  }

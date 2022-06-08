@@ -1,0 +1,101 @@
+{
+  "error": false,
+  "data": [
+    {
+      "id": 21,
+      "croatian_name": "Usnače",
+      "latin_name": "Lamiaceae"
+    },
+    {
+      "id": 22,
+      "croatian_name": "Koprivnjače",
+      "latin_name": "Urticaceae"
+    },
+    {
+      "id": 23,
+      "croatian_name": "Glavočike",
+      "latin_name": "Asteraceae "
+    },
+    {
+      "id": 24,
+      "croatian_name": "Štitarke",
+      "latin_name": "Apiaceae"
+    },
+    {
+      "id": 25,
+      "croatian_name": "Sljezovke",
+      "latin_name": "Malvaceae"
+    },
+    {
+      "id": 26,
+      "croatian_name": "Strupnikovke",
+      "latin_name": "Scrophulariaceae"
+    },
+    {
+      "id": 27,
+      "croatian_name": "Sirištare",
+      "latin_name": "Gentianaceae"
+    },
+    {
+      "id": 28,
+      "croatian_name": "Pljuskavice",
+      "latin_name": "Hypericaceae "
+    },
+    {
+      "id": 29,
+      "croatian_name": "Trputci",
+      "latin_name": "Plantaginaceae"
+    },
+    {
+      "id": 30,
+      "croatian_name": "Lovori",
+      "latin_name": "Lauraceae"
+    },
+    {
+      "id": 31,
+      "croatian_name": "Ljubice",
+      "latin_name": "Violaceae "
+    },
+    {
+      "id": 32,
+      "croatian_name": "Konopljike",
+      "latin_name": "Cannabaceae"
+    },
+    {
+      "id": 33,
+      "croatian_name": "Lukovi",
+      "latin_name": "Alliaceae"
+    },
+    {
+      "id": 34,
+      "croatian_name": "Kupusnjače",
+      "latin_name": "Brassicaceae"
+    },
+    {
+      "id": 35,
+      "croatian_name": "Pomoćnice",
+      "latin_name": "Solanaceae"
+    },
+    {
+      "id": 36,
+      "croatian_name": "Rute",
+      "latin_name": "Rutaceae"
+    },
+    {
+      "id": 37,
+      "croatian_name": "Irisi",
+      "latin_name": "Iridaceae"
+    },
+    {
+      "id": 38,
+      "croatian_name": "Imele",
+      "latin_name": "Loranthaceae"
+    },
+    {
+      "id": 39,
+      "croatian_name": "Čempresi",
+      "latin_name": "Cupressaceae"
+    }
+  ],
+  "message": "botanical_family list."
+}

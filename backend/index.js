@@ -22,7 +22,8 @@ var dbConn = mysql.createConnection({
 dbConn.connect();
 // Retrieve all plant_species 
 app.get('/plant_species', function (request, response) {
-    dbConn.query('SELECT * FROM plant_species', function (error, results, fields) {
+    dbConn.query('SELECT * FROM plant_species', 
+                 function (error, results, fields) {
         if (error) throw error;
         return response.send({
             error: false, data: results, message: 'plant_species_list.'          
